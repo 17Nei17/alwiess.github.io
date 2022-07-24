@@ -418,7 +418,7 @@ var initAll = function(data) {
 	Kns.drawBlocks = function() {
 		var html = "", blocks = [];
 		for (var block = 0; block < Kns.blocks.length; block++) {
-			var table = '<table class="block" id="block' + block + '"><tr><td><b>' + Kns.blocks[block][0] + '</b></td></tr>';
+			var table = '<table class="block" id="block' + block + '"><tr class="block-header"><td><b>' + Kns.blocks[block][0] + '</b></td></tr>';
 			for (var i = 1; i < Kns.blocks[block].length; i++) {
 				var all_n = Kns.blocks[block][i];
 				if (!(all_n instanceof Array)) {
@@ -429,7 +429,7 @@ var initAll = function(data) {
 					if (!Kns.parts[n].name) {
 						continue;
 					}
-					table += '<tr id="part' + n + '"><td><a href="#" class="edit' + n + '">' + Kns.parts[n].name + '</a></td></tr>'
+					table += '<tr id="part' + n + '"><td class="block-items"><a href="#" class="edit' + n + '">' + Kns.parts[n].name + '</a></td></tr>'
 				}
 			}
 			table += '</table>';
@@ -520,7 +520,7 @@ var initAll = function(data) {
 			if (selectedList.length < max && selectedList.length < info.length) {
 				canAdd = true;
 			}
-			html += '<div class="row-column">';
+			html += '<div class="row-column"><p class="detail-header">Выбрано</p>';
 			for (var i = 0; i < selectedList.length; i++) {
 				var style = i != dataNum ? '' : ' class="sel"';
 				var moveup = '';
@@ -540,7 +540,7 @@ var initAll = function(data) {
 							return el.data.id == selectedList[i];
 						})[0];
 						name = name ? name.data.name : '';
-						style += ' style="border-width: 1px; border-style: solid; width: 33px; height: 33px; border-radius: 5px; margin: 2px;' + Kns.getPreviewStyle(selectedList[i] || 0) + '"';
+						style += ' style="border-width: 1px; border-style: solid; width: 33px; min-width: 33px;  height: 33px; border-radius: 5px; margin: 2px;' + Kns.getPreviewStyle(selectedList[i] || 0) + '"';
 
 						html += '<div class="container-panel"><div class="tdarrow">' + moveup + '<br>' + movedown + '</div>';
 						html += '<div ' + style + ' onclick="Kns.clickedDetail(this);" data-num="' + i + '" data-value="' + (selectedList[i] || 0) + '" id="select' + i + '" title="' + name + '"/>';
@@ -581,7 +581,7 @@ var initAll = function(data) {
 				switch (Kns.detailVariant) {
 					case 1:
 						if (dataNum >= 0 && dataNum < selectedList.length) {
-							html += '<div class="elem-row">';
+							html += '<div class="elem-row"><p class="detail-header">Доступно</p>';
 							for (j = 0; j < info.length; j++) {
 								id = info[j].data.id;
 								if (selectedList.filter(function (el) {
