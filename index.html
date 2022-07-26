@@ -17,13 +17,16 @@
 			<option value="3">275 лун</option>
 		</select>
 	</label>
+	<label  id="checkbox-icon-elem">
+		<input type="button" id="mirror"  onclick="Kns.mirror();" value="Отразить кота" class="btn-kns">
+	</label>
 	<div class="row">
 	<!-- БЛОК С ВЫБОРОМ ТЕЛОСЛОЖЕНИЯ -->
 	<div id="blocks"></div>
 
 	<!-- БЛОК С ФОНОМ ЗА КОТОМ -->
 	<div id="field" style="background: url(spacoj/0.jpg) center no-repeat;" class="row-cat">
-		<div id="canvacat" class="row cat"></div>
+		<div id="canvacat" class="row cat parse-cat"></div>
 		<!-- БЛОК С ВЫБОРОМ ФОНА -->
 		<div style="margin-left: auto;overflow: auto;overflow: overlay; min-width: 30px;">
 			<table id="area">
