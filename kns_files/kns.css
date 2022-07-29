@@ -561,8 +561,17 @@ input[type=range]:focus::-ms-fill-upper {
 	/* #field {
 		background-size: cover;
 	} */
+	#canvacat {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
 }
 
-.parse-cat.mirror {
-transform: scale(-1, 1);
+.parse-cat.mirror > div {
+	transform: scale(-1, 1);
+}
+
+.parse-cat.zoom {
+	transform: scale(1.5);
 }

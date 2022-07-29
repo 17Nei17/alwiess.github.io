@@ -1,4 +1,6 @@
-Kns = {"num": {"Base": 0,
+Kns = {"num": {
+	    "Base": 0,
+	    "Defects": 24,
 		"TailBase": 15,
 		"TailElement": 6,
 		"ManeBase": 16,
@@ -29,11 +31,11 @@ Kns = {"num": {"Base": 0,
 	"paletteNormalEyes": 1,
 	"paletteAugmentedEyes": 3,
 	"paletteMaxAugmentedEyes": 7,
-       "blocks": [["Основа", [0, 22, 23, 16], 15, 18, 17], ["Шея и морда", [1, 19, 7, 8, 10, 20, 21], 5, 11], ["Туловище", 4, 9, 12], ["Лапы и хвост", 6, 2, 3, 13, 14]],
+       "blocks": [["Основа", [0, 22, 23, 16], 15, 18, 17], ["Шея и морда", [1, 19, 7, 8, 10, 20, 21], 5, 11], ["Туловище", 4, 9, 12], ["Лапы и хвост", 6, 2, 3, 13, 14], ["Дефекты (предпросмотр)", 24, 25, 26, 27, 28]],
 	"detailsMax": 8,
 	"actions": [{"id": 0}, {"id": 1}, {"id": -1, "size": 55}, {"id":5, "top": [{"file": "tongue.gif"}]}, {"id": 2}],
 	"folders": {"static": [],
-		"animationLayers": [0,13,14,2,3,4,12,9,11,5,16,20,10,17,7,8,18,21,23,1,19,22,15,6]},
+		"animationLayers": [0,13,14,2,3,4,12,9,11,5,16,20,10,17,7,8,18,21,23,1,19,22,15,6,24,25,26,27,28]},
 	"parts": [{"name": "Основной цвет",
 		"folder": "base",
 		"noCombine": true,
@@ -967,7 +969,109 @@ Kns = {"num": {"Base": 0,
 			"name": "Половина"},
 		{"id": "3",
 			"name": "Кайма",
-			"palette": 6}]}],
+			"palette": 6}]},
+			
+			{
+				"name": "Раны",
+				"folder": "defects/wound",
+				"info": [
+					{
+						"id": "1",
+						"name": "царапины",
+						"noPalette":  true
+					},
+					{
+						"id": "2",
+						"name": "сильнее царапины",
+						"noPalette":  true
+					},
+					{
+						"id": "3",
+						"name": "раны",
+						"noPalette":  true
+					},
+					{
+						"id": "4",
+						"name": "жестокие раны",
+						"noPalette":  true
+					}
+				],"cut_from": false
+			},
+			{
+				"name": "Грязь",
+				"folder": "defects/dirt",
+				"info": [
+					{
+						"id": "1",
+						"name": "первый уровень загрязнения",
+						"noPalette":  true
+					},
+					{
+						"id": "2",
+						"name": "второй уровень загрязнения",
+						"noPalette":  true
+					},
+					{
+						"id": "3",
+						"name": "третий уровень загрязнения",
+						"noPalette":  true
+					},
+					{
+						"id": "4",
+						"name": "четвертый",
+						"noPalette":  true
+					}
+				],"cut_from": false
+			},
+			{
+				"name": "Болезнь",
+				"folder": "defects/disease",
+				"info": [
+					{
+						"id": "1",
+						"name": "Болезнь",
+						"noPalette":  true
+					},
+				],"cut_from": false
+			},
+			{
+				"name": "drown (царапины?)",
+				"folder": "defects/drown",
+				"info": [
+					{
+						"id": "1",
+						"name": "первый уровень загрязнения",
+						"noPalette":  true
+					},
+					{
+						"id": "2",
+						"name": "второй уровень загрязнения",
+						"noPalette":  true
+					},
+					{
+						"id": "3",
+						"name": "третий уровень загрязнения",
+						"noPalette":  true
+					},
+					{
+						"id": "4",
+						"name": "четвертый",
+						"noPalette":  true
+					}
+				],"cut_from": false
+			},
+			{
+				"name": "Отравление",
+				"folder": "defects/poisoning",
+				"info": [
+					{
+						"id": "1",
+						"name": "Болезнь",
+						"noPalette":  true
+					},
+				],"cut_from": false
+			},
+		],
 			
 	"palette": [{"cut": true,
 		"cut_from": 0,

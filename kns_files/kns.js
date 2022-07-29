@@ -943,6 +943,11 @@ var initAll = function (data) {
 		Kns.parseCode(arrCode);
 		document.querySelector("#canvacat").classList.toggle("mirror");
 	};
+
+	Kns.scale = function () {
+		document.querySelector("#canvacat").classList.toggle("zoom");
+	}
+	
 	Kns.random = function (coeff) {
 		if (coeff === undefined) {
 			coeff = 0.5;
