@@ -919,13 +919,13 @@ var initAll = function (data) {
 	Kns.mirror = function () {
 		var arrCode = document.getElementById("code").value.split(' ');
 		var faceCode = arrCode[5];
-		var itemArr;
+		var itemArr = [];
 		[arrCode[7], arrCode[8]] = [arrCode[8], arrCode[7]];
 		[arrCode[2], arrCode[3]] = [arrCode[3], arrCode[2]];
 		[arrCode[13], arrCode[14]] = [arrCode[14], arrCode[13]];
 
 		faceCode = faceCode.split("-").map((item, index, arr) => {
-			if (item.split('/')[0] >= 56 || item.split('/')[0] <= 63) {
+			if (item.split('/')[0] >= 56 && item.split('/')[0] <= 63) {
 				if (item.split('/')[0] <= 59) {
 					itemArr = item.split('/');
 					itemArr[0] = Number(item.split('/')[0]) + 4;
@@ -971,46 +971,49 @@ var initAll = function (data) {
 					var result = {};
 					var palette = Kns.parts[i].palette || 0;
 					var detail = 0;
-					if (Kns.parts[i].info) {
-						var parts = [];
-						for (var one = 0; one < Kns.parts[i].info.length; one++) {
-							if (pastParts.indexOf(Kns.parts[i].info[one].id) !== -1) {
+					if(!Kns.parts[i].folder.includes("defects")){
+						if (Kns.parts[i].info) {
+							var parts = [];
+							for (var one = 0; one < Kns.parts[i].info.length; one++) {
+								if (pastParts.indexOf(Kns.parts[i].info[one].id) !== -1) {
+									continue;
+								}
+								if (!Kns.partAvailable(false, i, Kns.parts[i].info[one].id)) {
+									continue;
+								}
+								parts.push(Kns.parts[i].info[one]);
+							}
+							if (parts.length < 1) {
+								break;
+							}
+							var part = Math.floor(Math.random() * parts.length);
+							result.id = parts[part].id;
+							pastParts.push(parts[part].id);
+							palette = parts[part].palette !== undefined ? parts[part].palette : palette;
+							detail = parts[part].id;
+						}
+						var colours = [];
+						for (var c = 0; c < Kns.palette[palette].colours.length; c++) {
+							if (+Kns.palette[palette].colours[c].id === 0 || +Kns.palette[palette].colours[c].name === 0) {
 								continue;
 							}
-							if (!Kns.partAvailable(false, i, Kns.parts[i].info[one].id)) {
+							if (!Kns.partAvailable(false, i, detail, Kns.palette[palette].colours[c].id)) {
 								continue;
 							}
-							parts.push(Kns.parts[i].info[one]);
+							colours.push(Kns.palette[palette].colours[c].id);
 						}
-						if (parts.length < 1) {
-							break;
+						var colourNum = Math.floor(Math.random() * colours.length);
+						result.colour = colours[colourNum];
+						if (!Kns.parts[i].opaque) {
+							var maxOpacity = Kns.getOpacityForCode(100);
+							var opacity = Math.floor(Math.random() * (maxOpacity + 1));
+							if (opacity < maxOpacity) {
+								result.opacity = opacity;
+							}
 						}
-						var part = Math.floor(Math.random() * parts.length);
-						result.id = parts[part].id;
-						pastParts.push(parts[part].id);
-						palette = parts[part].palette !== undefined ? parts[part].palette : palette;
-						detail = parts[part].id;
+						Sel.main[i].push(result);
 					}
-					var colours = [];
-					for (var c = 0; c < Kns.palette[palette].colours.length; c++) {
-						if (+Kns.palette[palette].colours[c].id === 0 || +Kns.palette[palette].colours[c].name === 0) {
-							continue;
-						}
-						if (!Kns.partAvailable(false, i, detail, Kns.palette[palette].colours[c].id)) {
-							continue;
-						}
-						colours.push(Kns.palette[palette].colours[c].id);
-					}
-					var colourNum = Math.floor(Math.random() * colours.length);
-					result.colour = colours[colourNum];
-					if (!Kns.parts[i].opaque) {
-						var maxOpacity = Kns.getOpacityForCode(100);
-						var opacity = Math.floor(Math.random() * (maxOpacity + 1));
-						if (opacity < maxOpacity) {
-							result.opacity = opacity;
-						}
-					}
-					Sel.main[i].push(result);
+			
 				}
 			}
 		}
@@ -1416,6 +1419,12 @@ var initAll = function (data) {
 		document.execCommand("copy");
 		copyText.blur();
 		alert("Код скопирован!");
+	};
+
+	Kns.copyBBCode = function () {
+		var copyText = document.getElementById("code");
+		window.navigator.clipboard.writeText('[img]https://catwar.su/compositeByCode?code='+copyText.value+'&act=0[/img]')
+		alert("bb-code скопирован!");
 	};
 
 	Kns.start();

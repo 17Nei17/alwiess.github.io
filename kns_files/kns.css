@@ -517,6 +517,7 @@ input[type=range]:focus::-ms-fill-upper {
 		width: 100%;
 		order: 1;
 		height: 300px;
+		background-size: cover !important;
 	}
 	.a_none {
 		color: #d22e2e;
