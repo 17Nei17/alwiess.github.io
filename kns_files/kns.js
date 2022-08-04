@@ -1053,6 +1053,9 @@ var initAll = function(data) {
 	}
 
 	Kns.circlePaletteOnMouseMove = function(evt) {
+		console.log(evt.offsetX);
+		console.log(evt.offsetY);
+		
 		function throttle(callee, timeout) {
 			let timer = null;
 			return function perform() {
@@ -1065,18 +1068,44 @@ var initAll = function(data) {
 			  }, timeout);
 			};
 		  }
-		const throttledOnMouseMove = throttle(Kns.circlePaletteUpdated, 5);
-		// if(Kns.isMouseDown){
+		const throttledOnMouseMove = throttle(Kns.circlePaletteUpdated, 1);
+		if(Kns.isMouseDown){
 			throttledOnMouseMove();
-		// }
+		}
+	}
+
+	Kns.circlePaletteOnTouchMove = function(evt) {
+		var x = evt.touches[0].pageX - evt.touches[0].target.offsetLeft;     
+		var y = evt.touches[0].pageY - evt.touches[0].target.offsetTop;
+		function throttle(callee, timeout) {
+			let timer = null;
+			return function perform() {
+			  if (timer) return;
+		  
+			  timer = setTimeout(() => {
+				callee(x, y);
+				console.log(x,y)
+				clearTimeout(timer);
+				timer = null;
+			  }, timeout);
+			};
+		  }
+		const throttledOnMouseMove = throttle(Kns.circlePaletteUpdated, 1);
+		if(Kns.isMouseDown){
+			throttledOnMouseMove();
+		}
 	}
 
 	Kns.mouseDown = function(evt) {
+		console.log('mouseDown');
 		Kns.isMouseDown = true;
+		document.querySelector("body").style.overflow = "hidden";
 	}
 
 	Kns.mouseUp = function(evt) {
+		console.log('mouseUp');
 		Kns.isMouseDown = false;
+		document.querySelector("body").style.overflow = "";
 	}
 	Kns.drawPalette = function() {
 		var html = '';
@@ -1140,7 +1169,7 @@ var initAll = function(data) {
 					id = pList[j].id;
 				}
 				// onclick="Kns.circlePaletteClicked(event);"
-				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);"  data-detail="' + id + '"></canvas></div>';
+				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"ontouchmove="Kns.circlePaletteOnTouchMove(event);" ontouchstart="Kns.mouseDown(event);" onmousedown="Kns.mouseDown(event);" ontouchend="Kns.mouseUp(event);" onmouseup="Kns.mouseUp(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);"  data-detail="' + id + '"></canvas></div>';
 				colourCircle.append(htmlTop);
 
 				Kns.drawCircle(colour, p);
