@@ -78,7 +78,7 @@ td {
 	border: 1px solid #AD8446;
 	background-color: #FFE4C4;
 	border-radius: 0px 0px 15px 15px;
-	padding: 12px 0px;
+	padding: 12px 12px;
 }
 
 #color div, #area td, .tabledetail div {
@@ -173,6 +173,7 @@ input {
 .row, .row-cat, .row-detail, .row-color, .container-panel, .elem-row {
 	display: -webkit-flex;
 	display: flex;
+
 	/* overflow-y: auto;
 	overflow-y: overlay; */
 }
@@ -280,6 +281,8 @@ input {
 }
 .row-color{
 	margin: 10px 0px;
+	max-width: 364px;
+	height: fit-content;
 	page-break-after: always;
 	/*flex-basis: 800px;*/
 	display: -ms-flexbox;

@@ -1053,14 +1053,13 @@ var initAll = function(data) {
 	}
 
 	Kns.circlePaletteOnMouseMove = function(evt) {
-		console.log(evt)
 		function throttle(callee, timeout) {
 			let timer = null;
 			return function perform() {
 			  if (timer) return;
 		  
 			  timer = setTimeout(() => {
-				callee(evt.screenX, evt.screenY);
+				callee(evt.offsetX, evt.offsetY);
 				clearTimeout(timer);
 				timer = null;
 			  }, timeout);
@@ -1140,7 +1139,8 @@ var initAll = function(data) {
 				if (Kns.parts[Sel.now].info && Kns.parts[Sel.now].noVariations) {
 					id = pList[j].id;
 				}
-				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);" onclick="Kns.circlePaletteClicked(event);" data-detail="' + id + '"></canvas></div>';
+				// onclick="Kns.circlePaletteClicked(event);"
+				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);"  data-detail="' + id + '"></canvas></div>';
 				colourCircle.append(htmlTop);
 
 				Kns.drawCircle(colour, p);
