@@ -36,6 +36,11 @@ td {
 #variants-list {
 	width: inherit;
 }
+@media(min-width: 1024px){
+	#variants-list {
+		min-width: 500px;
+	}
+}
 #selected-items-list {
 	width: 100%;
 }
