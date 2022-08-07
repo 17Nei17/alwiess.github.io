@@ -46,7 +46,7 @@
             </label>
         </div>
 
-        <div class="row">
+        <div class="row" style="justify-content: center;">
             <!-- БЛОК С ФОНОМ ЗА КОТОМ -->
             <div id="field" style="background: url(spacoj/0.jpg) center no-repeat;" class="row-cat">
                 <div id="canvacat" class="row cat"></div>
@@ -85,12 +85,11 @@
                     </table>
                 </div>
             </div>
-            <!-- ПАЛИТРА -->
-            <div id="color_circle" class="row-color"></div>
-            <div id="color_circles" style="display: none;"><canvas id="palettebuffer"></canvas><canvas
-                    id="palettebuffer_work"></canvas><img src="kns_files/target.png" id="target_img"><img
-                    src="kns_files/target_wide.png" id="target_img_wide"></div>
-            <div id="color" class="row-color"></div>
+            <div class="select-pose-wrapper" >
+                <div id="minusCount" onclick="Kns.minusCount();"></div>
+                <div id="countHeader">Переключение поз</div>
+                <div id="plusCount" onclick="Kns.plusCount();"></div>
+            </div>
         </div>
         <div class="row">
             <!-- БЛОК С ВЫБОРОМ ТЕЛОСЛОЖЕНИЯ -->
@@ -99,11 +98,26 @@
                 <div id="blocks"></div>
             </div>
 
-            <!-- БЛОК С ЭЛЕМЕНТАМИ -->
-            <div id="selected-items-list">
-                <!-- <div class="list-header">Выбор</div> -->
-                <div id="detail" class="row-detail"></div>
+            <div class="slider">
+                <div class="slides">
+                    <div id="slide-1">
+                        <!-- БЛОК С ЭЛЕМЕНТАМИ -->
+                        <div id="selected-items-list">
+                            <!-- <div class="list-header">Выбор</div> -->
+                            <div id="detail" class="row-detail"></div>
+                        </div>
+                    </div>
+                    <div id="slide-2">
+                        <!-- ПАЛИТРА -->
+                        <div id="color_circle" class="row-color"></div>
+                        <div id="color_circles" style="display: none;"><canvas id="palettebuffer"></canvas><canvas
+                                id="palettebuffer_work"></canvas><img src="kns_files/target.png" id="target_img"><img
+                                src="kns_files/target_wide.png" id="target_img_wide"></div>
+                        <div id="color" class="row-color"></div>
+                    </div>
+                </div>
             </div>
+
             <!-- ХРЕНЬ НИЖЕ ПАЛИТРЫ -->
             <div class="info" style="max-width: 700px;">
             </div>

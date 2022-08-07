@@ -3,8 +3,11 @@
 var initAll = function(data) {
 	//Kns = data;
 	Kns.circleR = 100;
+	Kns.startCount = 0;
+	Kns.ArrCount = [0, 1, -1, 5, 2]; // порядок поз, используется для перечисления
 	Kns.isMouseDown = false;
 	// Kns.smolCircleR = 25;
+	Kns.colorHistory =  [];
 	Kns.smolCircleR = 15;
 	Kns.paletteScale = 1;
 	Kns.isAnimation = true;
@@ -58,7 +61,6 @@ var initAll = function(data) {
 			html += '</div>';
 		}
 		$("#canvacat").html(html);
-
 		Kns.vip();
 		Kns.drawBlocks();
 		Kns.refresh(true);
@@ -388,6 +390,40 @@ var initAll = function(data) {
 		return file;
 	}
 
+	Kns.minusCount = function () {
+		Kns.startCount --;
+		if(Kns.startCount < 0){
+			Kns.startCount = Kns.ArrCount.length - 1;
+		}
+		if(Kns.startCount === 2){
+			Kns.startCount --;
+		}
+		Kns.ArrCount.forEach(function(item) {
+			document.querySelector("#block-cat_" + item +"").style.display = "none";
+		});
+		if(Kns.startCount === 0){
+			document.querySelector("#block-cat_-1").style.display = "block";
+		}
+		document.querySelector("#block-cat_" + Kns.ArrCount[Kns.startCount] +"").style.display = "block";
+	}
+
+	Kns.plusCount = function () {
+		Kns.startCount ++;
+		if(Kns.startCount >= Kns.ArrCount.length){
+			Kns.startCount = 0;
+		}
+		if(Kns.startCount === 2){
+			Kns.startCount ++;
+		}
+		Kns.ArrCount.forEach(function(item) {
+			document.querySelector("#block-cat_" + item +"").style.display = "none";
+		});
+		if(Kns.startCount === 0){
+			document.querySelector("#block-cat_-1").style.display = "block";
+		}
+		document.querySelector("#block-cat_" + Kns.ArrCount[Kns.startCount] +"").style.display = "block";	
+	}
+
 	Kns.finishCanvas = function (canvases, act, key) {
 		Kns.canvaAnim[act] = {};
 		var canvas = document.getElementById("cat_" + act).getContext('2d');
@@ -548,7 +584,7 @@ var initAll = function(data) {
 	Kns.drawBlocks = function() {
 		var html = "", blocks = [];
 		for (var block = 0; block < Kns.blocks.length; block++) {
-			var table = '<table class="block" id="block' + block + '"><tr><td><b>' + Kns.blocks[block][0] + '</b></td></tr>';
+			var table = '<div class="block" id="block' + block + '">';
 			for (var i = 1; i < Kns.blocks[block].length; i++) {
 				var all_n = Kns.blocks[block][i];
 				if (!(all_n instanceof Array)) {
@@ -559,10 +595,11 @@ var initAll = function(data) {
 					if (!Kns.parts[n].name) {
 						continue;
 					}
-					table += '<tr id="part' + n + '"><td><a href="#" class="edit' + n + '">' + Kns.parts[n].name + '</a></td></tr>'
+					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div style="background: url(cats/palette/6.png) center; height: 50px; width: 35px; margin: 2px; color:white;">' + Kns.parts[n].name + '</div></a></div>'
 				}
 			}
-			table += '</table>';
+
+			table += '</div>';
 			blocks.push(table);
 		}
 		blocks = "<p>" + blocks.join("<br>") + "</p>";
@@ -650,7 +687,7 @@ var initAll = function(data) {
 			if (selectedList.length < max && selectedList.length < info.length) {
 				canAdd = true;
 			}
-			html += '<div id="selected-item-wrapper"><div class="list-header">Выбор</div><div class="row-column">';
+			html += '<div id="selected-item-wrapper"><div class="list-header">Выбрано</div><div class="row-column">';
 			for (var i = 0; i < selectedList.length; i++) {
 				var style = i != dataNum ? '' : ' class="sel"';
 				var moveup = '';
@@ -710,7 +747,7 @@ var initAll = function(data) {
 			if (!Kns.parts[Sel.now].noVariations) {
 				switch (Kns.detailVariant) {
 					case 1:
-						if (dataNum >= 0 && dataNum < selectedList.length) {
+						if (dataNum >= 0 && dataNum < selectedList.length) { //отвечает за отрисовку списка вариантов
 							html += '<div id="variants-list"><div class="list-header">Варианты</div><div class="elem-row">';
 							for (j = 0; j < info.length; j++) {
 								id = info[j].data.id;
@@ -1022,6 +1059,11 @@ var initAll = function(data) {
 					}, []);
 			}
 			var colors = getLinearGradientColors(linearGrad, circum, ctx2);
+			ctx.beginPath();
+			ctx.arc(cX, cY, cR, 0, 2*Math.PI, false);
+			ctx.lineWidth = 1;
+			ctx.strokeStyle = 'white';
+			ctx.stroke();
 
 			ctx2.canvas.width = cXC;
 			ctx2.canvas.height = cYC;
@@ -1038,7 +1080,7 @@ var initAll = function(data) {
 			// return a Pattern so we can use it as fillStyle or strokeStyle
 			ctx.fillStyle = ctx2.createPattern(ctx2.canvas, 'no-repeat');
 			ctx.beginPath();
-			ctx.arc(cX, cY, cR,Math.PI*2,0);
+			ctx.arc(cX, cY, cR - 1 ,Math.PI*2,0);
 			ctx.fill();
 
 			if (center) {
@@ -1051,61 +1093,32 @@ var initAll = function(data) {
 			ctx2.canvas.width = ctx2.canvas.height = 1;
 		}
 	}
-
 	Kns.circlePaletteOnMouseMove = function(evt) {
-		console.log(evt.offsetX);
-		console.log(evt.offsetY);
-		
 		function throttle(callee, timeout) {
 			let timer = null;
 			return function perform() {
 			  if (timer) return;
-		  
 			  timer = setTimeout(() => {
-				callee(evt.offsetX, evt.offsetY);
+				callee(evt);
 				clearTimeout(timer);
 				timer = null;
 			  }, timeout);
 			};
 		  }
-		const throttledOnMouseMove = throttle(Kns.circlePaletteUpdated, 1);
-		if(Kns.isMouseDown){
-			throttledOnMouseMove();
-		}
-	}
-
-	Kns.circlePaletteOnTouchMove = function(evt) {
-		var x = evt.touches[0].pageX - evt.touches[0].target.offsetLeft;     
-		var y = evt.touches[0].pageY - evt.touches[0].target.offsetTop;
-		function throttle(callee, timeout) {
-			let timer = null;
-			return function perform() {
-			  if (timer) return;
-		  
-			  timer = setTimeout(() => {
-				callee(x, y);
-				console.log(x,y)
-				clearTimeout(timer);
-				timer = null;
-			  }, timeout);
-			};
-		  }
-		const throttledOnMouseMove = throttle(Kns.circlePaletteUpdated, 1);
+		const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 5);
 		if(Kns.isMouseDown){
 			throttledOnMouseMove();
 		}
 	}
 
 	Kns.mouseDown = function(evt) {
-		console.log('mouseDown');
 		Kns.isMouseDown = true;
-		document.querySelector("body").style.overflow = "hidden";
+		Kns.circlePaletteClicked(evt);
 	}
 
 	Kns.mouseUp = function(evt) {
-		console.log('mouseUp');
 		Kns.isMouseDown = false;
-		document.querySelector("body").style.overflow = "";
+		Kns.circlePaletteClicked(evt);
 	}
 	Kns.drawPalette = function() {
 		var html = '';
@@ -1168,8 +1181,7 @@ var initAll = function(data) {
 				if (Kns.parts[Sel.now].info && Kns.parts[Sel.now].noVariations) {
 					id = pList[j].id;
 				}
-				// onclick="Kns.circlePaletteClicked(event);"
-				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"ontouchmove="Kns.circlePaletteOnTouchMove(event);" ontouchstart="Kns.mouseDown(event);" onmousedown="Kns.mouseDown(event);" ontouchend="Kns.mouseUp(event);" onmouseup="Kns.mouseUp(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);"  data-detail="' + id + '"></canvas></div>';
+				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);"  ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);" data-detail="' + id + '"></canvas></div>';
 				colourCircle.append(htmlTop);
 
 				Kns.drawCircle(colour, p);
@@ -1271,9 +1283,13 @@ var initAll = function(data) {
 			for (var k = 0; k < gradSet.shades.length; k++) {
 				grad.addColorStop(gradSet.shades[k].bright, gradSet.shades[k].colour);
 			}
+
+			finalCtx.fillStyle = "white";
+			finalCtx.fillRect(Kns.smolCircleR * 2 + 3, Kns.smolCircleR, Kns.smolCircleR + 1, Kns.circleR * 2);
+
 			finalCtx.fillStyle = grad;
-			finalCtx.fillRect(Kns.smolCircleR * 2 + 5, Kns.smolCircleR, Kns.smolCircleR, Kns.circleR * 2);
-			finalCtx.globalAlpha = opacity;
+			finalCtx.fillRect(Kns.smolCircleR * 2 + 4, Kns.smolCircleR, Kns.smolCircleR - 1, (Kns.circleR * 2) - 1);
+			finalCtx.globalAlpha = opacity; 
 		}
 		if (complete) {
 			finalCtx.drawImage(target_left, Kns.smolCircleR * 2, brightness + Kns.smolCircleR - target_left.width / 2);
@@ -1804,7 +1820,10 @@ var initAll = function(data) {
 	};
 
 	Kns.circlePaletteClicked = function(evt) {
-		Kns.circlePaletteUpdated(evt.offsetX, evt.offsetY, evt.target);
+		var target = evt.target.getBoundingClientRect();
+		var x = evt.clientX - target.left;
+		var y = evt.clientY - target.top;
+		Kns.circlePaletteUpdated(x, y, evt.target);
 	}
 	Kns.circlePaletteUpdated = function(x, y, obj) {
 		x /= Kns.paletteScale;
