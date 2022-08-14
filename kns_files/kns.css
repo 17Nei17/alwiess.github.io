@@ -594,11 +594,11 @@ input[type=range]:focus::-ms-fill-upper {
 		width: 100vw;
 	}
 	#variants-list {
-		min-width: 60%;
+		min-width: calc(60% - 24px);
 		margin: 0px 12px;
 	}
 	#selected-item-wrapper{
-		min-width: 30%;
+		min-width: calc(30% - 24px);
 		margin-left: 12px;
 		margin-right: 12px;
 	}
