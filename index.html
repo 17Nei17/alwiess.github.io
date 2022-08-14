@@ -48,44 +48,24 @@
 
         <div class="row" style="justify-content: center;">
             <!-- БЛОК С ФОНОМ ЗА КОТОМ -->
-            <div id="field" style="background: url(spacoj/0.jpg) center no-repeat;" class="row-cat">
+            <div id="field" style="background: url(spacoj/0.jpg) center no-repeat; background-size: cover;" class="row-cat">
                 <div id="canvacat" class="row cat"></div>
-                <!-- БЛОК С ВЫБОРОМ ФОНА -->
-                <div style="margin-left: auto;overflow: auto;overflow: overlay; min-width: 30px;">
-                    <table id="area">
-                        <!-- перечисление доступных фонов -->
-                        <tr>
-                            <td style="background: #FFDEAD;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/0.jpg); background-size: 200%;"
-                                class="field_palette selected_field" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/1.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/2.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/3.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/4.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/5.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/6.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                        <tr>
-                            <td style="background: url(spacoj/7.jpg); background-size: 200%;" class="field_palette" />
-                        </tr>
-                    </table>
-                </div>
             </div>
-            <div class="select-pose-wrapper" >
+            <!-- БЛОК С ВЫБОРОМ ФОНА -->
+                <div id="area">
+                    <!-- перечисление доступных фонов -->
+                        <div style="background: #FFDEAD;" class="field_palette"></div>
+                        <div style="background: url(spacoj/0.jpg); background-size: 200%;"
+                            class="field_palette selected_field"></div>
+                        <div style="background: url(spacoj/1.jpg); background-size: 200%;" class="field_palette"></div>
+                        <div style="background: url(spacoj/2.jpg); background-size: 200%;" class="field_palette"></div>
+                        <div style="background: url(spacoj/3.jpg); background-size: 200%;" class="field_palette"></div>
+                        <div style="background: url(spacoj/4.jpg); background-size: 200%;" class="field_palette"></div>
+                        <div style="background: url(spacoj/5.jpg); background-size: 200%;" class="field_palette"></div>
+                        <div style="background: url(spacoj/6.jpg); background-size: 200%;" class="field_palette"></div>
+                        <div style="background: url(spacoj/7.jpg); background-size: 200%;" class="field_palette"></div>
+                </div>
+            <div class="select-pose-wrapper">
                 <div id="minusCount" onclick="Kns.minusCount();"></div>
                 <div id="countHeader">Переключение поз</div>
                 <div id="plusCount" onclick="Kns.plusCount();"></div>
@@ -102,165 +82,162 @@
                 <div class="slides">
                     <div id="slide-1">
                         <!-- БЛОК С ЭЛЕМЕНТАМИ -->
-                        <div id="selected-items-list">
-                            <!-- <div class="list-header">Выбор</div> -->
                             <div id="detail" class="row-detail"></div>
-                        </div>
                     </div>
                     <div id="slide-2">
-                        <!-- ПАЛИТРА -->
-                        <div id="color_circle" class="row-color"></div>
-                        <div id="color_circles" style="display: none;"><canvas id="palettebuffer"></canvas><canvas
-                                id="palettebuffer_work"></canvas><img src="kns_files/target.png" id="target_img"><img
-                                src="kns_files/target_wide.png" id="target_img_wide"></div>
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div id="color_circle" class="row-color"></div>
+                                                    <!-- ПАЛИТРА -->
                         <div id="color" class="row-color"></div>
+                            <div id="color_circles" style="display: none;"><canvas id="palettebuffer"></canvas><canvas
+                                    id="palettebuffer_work"></canvas><img src="kns_files/target.png"
+                                    id="target_img"><img src="kns_files/target_wide.png" id="target_img_wide"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- ХРЕНЬ НИЖЕ ПАЛИТРЫ -->
-            <div class="info" style="max-width: 700px;">
+        <!-- ХРЕНЬ НИЖЕ ПАЛИТРЫ -->
+        <div class="info" style="max-width: 700px;">
+        </div>
+        <div class="row-column">
+            <!-- СОХРАНИТЬ ОКРАС? -->
+            <div id="confirm" style="display:none;">
+                <p id="confirm_text">?</p>
+                <input type="submit" value="OK" id="confirm_yes" class="btn-kns">
+                <input type="submit" value="Отмена" id="confirm_no" class="btn-kns">
+            </div>
+            <div class="list-header">Управление окрасом :</div>
+            <div class="row-block-wrapper">
+                <button id="random" class="btn-kns" title="Случайный окрас">Случайный окрас</button>
+                <button id="random2" class="btn-kns" title="Очень случайный окрас">Очень случайный окрас</button>
+                <button data-toggle="modal" class="btn-kns" data-target="#exampleModalLong"
+                    title="Открыть библиотеку окрасов">Открыть библиотеку окрасов</button>
             </div>
             <div class="row-column">
-                <!-- СОХРАНИТЬ ОКРАС? -->
-                <div id="confirm" style="display:none;">
-                    <p id="confirm_text">?</p>
-                    <input type="submit" value="OK" id="confirm_yes" class="btn-kns">
-                    <input type="submit" value="Отмена" id="confirm_no" class="btn-kns">
-                </div>
-                <div class="list-header">Управление окрасом :</div>
+                <div class="list-header">Код окраса:</div>
                 <div class="row-block-wrapper">
-                    <button id="random" class="btn-kns" title="Случайный окрас">Случайный окрас</button>
-                    <button id="random2" class="btn-kns" title="Очень случайный окрас">Очень случайный окрас</button>
-                    <button data-toggle="modal" class="btn-kns" data-target="#exampleModalLong"
-                        title="Открыть библиотеку окрасов">Открыть библиотеку окрасов</button>
-                </div>
-                <div class="row-column">
-                    <div class="list-header">Код окраса:</div>
-                    <div class="row-block-wrapper">
-                        <input id="code" onchange="Kns.parseCode(this);" class="output-code">
-                        <button onclick="Kns.copyCode();" class="btn-kns copy" title="Копировать окрас">c</button>
-                        <div>
-                            <input type="submit" value="Сохранить" id="sbm" class="btn-kns">
-                            <input type="button" id="reset" value="Сбросить" class="btn-kns">
-                        </div>
-                        <p><b>Поскольку вам больше 275 лун и вы только что переродились, вы обладаете невероятно редкой
-                                возможностью
-                                выбрать гетерохромию, один из особых окрасов и/или фиолетовые глаза. Поспешите: это
-                                возможно
-                                только до 0.5
-                                лун после перерождения.</b></p>
+                    <input id="code" onchange="Kns.parseCode(this);" class="output-code">
+                    <button onclick="Kns.copyCode();" class="btn-kns copy" title="Копировать окрас">c</button>
+                    <div>
+                        <input type="submit" value="Сохранить" id="sbm" class="btn-kns">
+                        <input type="button" id="reset" value="Сбросить" class="btn-kns">
                     </div>
+                    <p><b>Поскольку вам больше 275 лун и вы только что переродились, вы обладаете невероятно редкой
+                            возможностью
+                            выбрать гетерохромию, один из особых окрасов и/или фиолетовые глаза. Поспешите: это
+                            возможно
+                            только до 0.5
+                            лун после перерождения.</b></p>
                 </div>
             </div>
         </div>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLongTitle">Библиотека окрасов</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h3 align="center" class="lib-group-elem">Вид окрасов</h3>
-                        <div class="row-modal">
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
+    </div>
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Библиотека окрасов</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 align="center" class="lib-group-elem">Вид окрасов</h3>
+                    <div class="row-modal">
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
                             </div>
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
                             </div>
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
-                            </div>
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
-                            </div>
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
-                            </div>
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
-                            </div>
-                            <div class="lib-elem">
-                                <div class="caption-elem-lib">
-                                    Окрас 1
-                                </div>
-                                <div class="lib-elem-img">
-                                    <img src="1.png">
-                                </div>
-                                <div>
-                                    <button type="button" class="input-code">Применить</button>
-                                </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
                             </div>
                         </div>
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
+                            </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
+                            </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
+                            </div>
+                        </div>
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
+                            </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
+                            </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
+                            </div>
+                        </div>
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
+                            </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
+                            </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
+                            </div>
+                        </div>
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
+                            </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
+                            </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
+                            </div>
+                        </div>
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
+                            </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
+                            </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
+                            </div>
+                        </div>
+                        <div class="lib-elem">
+                            <div class="caption-elem-lib">
+                                Окрас 1
+                            </div>
+                            <div class="lib-elem-img">
+                                <img src="1.png">
+                            </div>
+                            <div>
+                                <button type="button" class="input-code">Применить</button>
+                            </div>
+                        </div>
+                    </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-kns" data-dismiss="modal">Закрыть</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-kns" data-dismiss="modal">Закрыть</button>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 
 
-    <script>(function (d, w, c) {
+    <script async>(function (d, w, c) {
             (w[c] = w[c] || []).push(function () {
                 try {
                     w.yaCounter6984625 = new Ya.Metrika({

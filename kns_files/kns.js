@@ -999,7 +999,7 @@ var initAll = function(data) {
 			if (!palette.circle) {
 				continue;
 			}
-
+			
 			var maxI = 0, i, centerI = [];
 			for (i = 0; i < palette.colours.length; i++) {
 				palette.colours[i].shades.sort(function(a, b) { return b.bright - a.bright; });
@@ -1084,7 +1084,7 @@ var initAll = function(data) {
 			ctx.fill();
 
 			if (center) {
-				var centerGrad = ctx.createRadialGradient(cX, cY, 0, cX, cY, cR);
+				var centerGrad = ctx.createRadialGradient(cX, cY, 0, cX, cY , cR - 10);
 				centerGrad.addColorStop(0, center.shades[0].colour);
 				centerGrad.addColorStop(1, center.shades[0].colour + '00');
 				ctx.fillStyle = centerGrad;
@@ -1105,7 +1105,7 @@ var initAll = function(data) {
 			  }, timeout);
 			};
 		  }
-		const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 5);
+		const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 1);
 		if(Kns.isMouseDown){
 			throttledOnMouseMove();
 		}
@@ -1163,6 +1163,7 @@ var initAll = function(data) {
 			}
 			if (Kns.palette[p].circle && colour) {
 				var deltaX = Kns.smolCircleR * 7, deltaY = Kns.smolCircleR;
+				// var deltaX = Kns.smolCircleR, deltaY = Kns.smolCircleR;
 				var tHeight = (Kns.circleR + deltaY) * 2, tWidth = Kns.smolCircleR * 6 + (Kns.circleR + Kns.smolCircleR) * 2;
 
 				var canvasCtx = document.getElementById("palettebuffer_work").getContext('2d');
@@ -1181,10 +1182,16 @@ var initAll = function(data) {
 				if (Kns.parts[Sel.now].info && Kns.parts[Sel.now].noVariations) {
 					id = pList[j].id;
 				}
+				
 				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);"  ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);" data-detail="' + id + '"></canvas></div>';
 				colourCircle.append(htmlTop);
-
-				Kns.drawCircle(colour, p);
+				var selectedColor = "<input id='selected-color' value="+colour+">";
+				colourCircle.append(selectedColor);
+				if (!Kns.parts[Sel.now].opaque && pList[0] && Kns.palette[pList[0].id]) {
+					Kns.drawCircle(colour, p , null, true);
+				} else {
+					Kns.drawCircle(colour, p);
+				}	
 
 				continue;
 			}
@@ -1215,15 +1222,14 @@ var initAll = function(data) {
 			var minOpacity = Kns.getOpacityFromCode(0) * 100;
 			var stepOpacity = (100 - minOpacity) / Kns.getOpacityForCode(100);
 			var opacitystr = (opacity + "").split(".")[0] || minOpacity;
-			html += "<label><b>Непрозрачность: </b>" +
-				"<input type='range' max='100' min='" + minOpacity + "' step='" + stepOpacity + "' value='" + opacity + "' onchange='Kns.selectedOpacity(this.value);' oninput='Kns.selectedOpacity(this.value);' id='opacity_range'>" +
-				"<span id='opacity_value'>" + opacitystr + "%</span></label>";
+			//полоса прозрачности
+			// html += "<div class='containerSaturation'><input type='range' max='100' min='" + minOpacity + "' step='" + stepOpacity + "' value='" + opacity + "' onchange='Kns.selectedOpacity(this.value);' oninput='Kns.selectedOpacity(this.value);' id='opacity_range' class='saturation'><span id='opacity_value'>" + opacitystr + "%</span></label></div>";
 		}
 		($("#color").html(html))[(html ? "show" : "hide")]();
 		(colourCircle)[(colourCircle.html() ? "show" : "hide")]();
 		$("[title]").tipTip();
 	};
-	Kns.drawCircle = function(colour, p, hold) {
+	Kns.drawCircle = function(colour, p, hold, needOpacity) {
 		var props = (colour+"").split(":");
 		var complete = true;
 		if (props.length !== 3) {
@@ -1235,22 +1241,30 @@ var initAll = function(data) {
 		if (!palette.circle) {
 			return;
 		}
-
+		if(needOpacity){
+			$(".palette").after("<canvas id='transparency-palette' height='230' width='20'></canvas><input id='saturation_range' type='range' max='100' min='50' step='5' value='100' onchange='Kns.selectedOpacity(this.value);' oninput='Kns.selectedOpacity(this.value);' id='opacity_range' class='saturation'>");
+			var transparencyCtx = $("#transparency-palette")[0].getContext('2d');
+		}
+		$(".palette").after("<canvas id='saturation-palette' height='230' width='20'></canvas><input oninput='Kns.brightnessClicked(this.value)' onchange='Kns.brightnessClicked(this.value);' type='range' max='100' min='0' step='1' value="+props[2]+" id='opacity_range' class='saturation'>");
+		var saturationCtx = $("#saturation-palette")[0].getContext('2d');
 		var finalCtx = $(".palette", "#show_palette_" + p)[0].getContext('2d');
 		var paletteCtx = document.getElementById("palettebuffer_work").getContext('2d');
 		var target_left = document.getElementById('target_img' + (hold === 'l' ? "_wide" : ''));
 		var target_right = document.getElementById('target_img' + (hold === 'r' ? "_wide" : ''));
-
 		var brightness = (100 - props[2]) * 2 * Kns.circleR / 100;
 		props[1] /= 100;
 		var angle = 2 * Math.PI * props[1];
 		var radius = props[0] * Kns.circleR / 100;
 
 		finalCtx.canvas.width++;finalCtx.canvas.width--;
+		
+		// saturationCtx.scale(Kns.paletteScale, Kns.paletteScale);
 
 		finalCtx.scale(Kns.paletteScale, Kns.paletteScale);
 
 		finalCtx.drawImage(paletteCtx.canvas, 0, 0);
+
+		// saturationCtx.drawImage(paletteCtx.canvas, 0, 0);
 		var i;
 		for (i = 1; i < palette.colours.length; i++) {
 			if (props[1] >= palette.colours[i - 1].point && props[1] <= palette.colours[i].point) {
@@ -1280,19 +1294,29 @@ var initAll = function(data) {
 			}
 
 			var grad = finalCtx.createLinearGradient(Kns.smolCircleR * 2, Kns.smolCircleR + 2 * Kns.circleR, Kns.smolCircleR * 2, Kns.smolCircleR);
+			var whiteGrad = finalCtx.createLinearGradient(Kns.smolCircleR * 2, Kns.smolCircleR + 2 * Kns.circleR, Kns.smolCircleR * 2, Kns.smolCircleR);
 			for (var k = 0; k < gradSet.shades.length; k++) {
 				grad.addColorStop(gradSet.shades[k].bright, gradSet.shades[k].colour);
 			}
+			whiteGrad.addColorStop(0, "rgba(255,255,255,1)");
+			whiteGrad.addColorStop(1, "rgba(255,255,255,0.1)");
+			saturationCtx.fillStyle = "white";
+			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
 
-			finalCtx.fillStyle = "white";
-			finalCtx.fillRect(Kns.smolCircleR * 2 + 3, Kns.smolCircleR, Kns.smolCircleR + 1, Kns.circleR * 2);
+			if(transparencyCtx){
+				transparencyCtx.fillStyle = grad;
+				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
+				transparencyCtx.globalAlpha = opacity; 
+				transparencyCtx.fillStyle = whiteGrad;
+				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
+			}
 
-			finalCtx.fillStyle = grad;
-			finalCtx.fillRect(Kns.smolCircleR * 2 + 4, Kns.smolCircleR, Kns.smolCircleR - 1, (Kns.circleR * 2) - 1);
-			finalCtx.globalAlpha = opacity; 
+			saturationCtx.fillStyle = grad;
+			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
+			saturationCtx.globalAlpha = opacity; 
 		}
 		if (complete) {
-			finalCtx.drawImage(target_left, Kns.smolCircleR * 2, brightness + Kns.smolCircleR - target_left.width / 2);
+			// finalCtx.drawImage(target_left, Kns.smolCircleR * 2, brightness + Kns.smolCircleR - target_left.width / 2);
 			finalCtx.drawImage(target_right, Kns.smolCircleR * 7 + Kns.circleR + radius * Math.cos(angle) - target_right.width / 2, Kns.smolCircleR + Kns.circleR + radius * Math.sin(angle) - target_right.width / 2);
 		}
 		finalCtx.scale(1, 1);
@@ -1825,6 +1849,19 @@ var initAll = function(data) {
 		var y = evt.clientY - target.top;
 		Kns.circlePaletteUpdated(x, y, evt.target);
 	}
+
+	Kns.brightnessClicked = function(value){
+		var dataNum = 0;
+		if (!Kns.parts[Sel.now].noCombine) {
+			dataNum = $(".sel").attr("data-num");
+		}
+		var props = Sel.main[Sel.now][dataNum].colour.split(":");
+		props[2] = value;
+		Sel.main[Sel.now][dataNum].colour = props.join(":");
+		document.querySelector("#selected-color").value = Sel.main[Sel.now][dataNum].colour;
+		Kns.refresh(false, false, true, true, true, false, true);
+	}
+
 	Kns.circlePaletteUpdated = function(x, y, obj) {
 		x /= Kns.paletteScale;
 		y /= Kns.paletteScale;
@@ -1835,6 +1872,7 @@ var initAll = function(data) {
 			dataNum = $(".sel").attr("data-num");
 		}
 		var props = Sel.main[Sel.now][dataNum].colour.split(":");
+		document.querySelector("#selected-color").value = Sel.main[Sel.now][dataNum].colour;
 		if (props.length !== 3) {
 			props = [35, 60, 100];
 		}

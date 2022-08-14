@@ -38,7 +38,8 @@ td {
 }
 @media(min-width: 1024px){
 	#variants-list {
-		min-width: 500px;
+		min-width: 400px;
+		max-width: 400px;
 	}
 }
 #selected-items-list {
@@ -46,6 +47,7 @@ td {
 }
 #details-list {
 	width: 100%;
+	margin-bottom: 10px;
 }
 
 #title {
@@ -68,7 +70,7 @@ td {
 }
 #selected-item-wrapper{
 	min-width: 150px;
-	margin-left: 12px;
+	/* margin-left: 12px; */
     margin-right: 12px;
 }
 #selected-item-wrapper .row-column {
@@ -82,6 +84,10 @@ td {
 	background-color: #FFE4C4;
 	border-radius: 0px 0px 15px 15px;
 	padding: 12px 12px;
+}
+.row-block-wrapper > button{
+	width: 100%;
+	max-width: 300px;
 }
 
 #color div, #area td, .tabledetail div {
@@ -98,6 +104,12 @@ td {
 #area {
 	border-collapse: separate;
 	border-spacing: 0 1px;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+	position: relative;
+    top: -41px;
 }
 .tabledetail div {
 	width: 33px;
@@ -121,9 +133,14 @@ td {
 	border-width: 1px;
 	border-style: solid;
 	box-sizing: border-box;
+	width: 35px;
+	height: 35px;
 }
 #lock {
 	cursor: pointer;
+}
+.selected_block > div{
+	color: red !important;
 }
 #confirm {
 	background: #AD8446;
@@ -296,7 +313,7 @@ input {
 	background-color: #FFE4C4;
 	min-height: 312px;
 	border: 1px solid #AD8446;
-	border-radius: 0px 0px 15px 0px;
+	/* border-radius: 0px 0px 15px 0px; */
 }
 .row-column{
 	flex-direction: column;
@@ -388,7 +405,6 @@ input {
 		max-width: 100%;
 		min-width: 100%;
 		width: 100%;
-		-webkit-order: 1;
 	}
 	.row-color{
 		width: 100%;
@@ -474,7 +490,7 @@ input[type=range]::-ms-thumb {
     background: #fece2f;
     cursor: pointer;
 }
-input[type=range]::-webkit-slider-runnable-track {
+/* input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 12px;
     cursor: pointer;
@@ -485,9 +501,9 @@ input[type=range]::-webkit-slider-runnable-track {
 
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #feeebd;
-}
+} */
 
-input[type=range]::-moz-range-track {
+/* input[type=range]::-moz-range-track {
     width: 100%;
     height: 12px;
     cursor: pointer;
@@ -504,7 +520,7 @@ input[type=range]::-ms-track {
     border-color: transparent;
     border-width: 16px 0;
     color: transparent;
-}
+} */
 input[type=range]::-ms-fill-lower {
     background: #feeebd;
     border: 1px solid #8e846b;
@@ -574,6 +590,18 @@ input[type=range]:focus::-ms-fill-upper {
 	#detail {
 		display: flex;
 	}
+	#detail:not(:empty) {
+		width: 100vw;
+	}
+	#variants-list {
+		min-width: 60%;
+		margin: 0px 12px;
+	}
+	#selected-item-wrapper{
+		min-width: 30%;
+		margin-left: 12px;
+		margin-right: 12px;
+	}
 	#selected-item-wrapper .row-column, .elem-row{
 		min-height: 270px;
 		height: 270px;
@@ -639,18 +667,106 @@ input[type=range]:focus::-ms-fill-upper {
 	  }
 	  #slide-2 {
 		min-width: calc(100vw - 16px);
+		flex-direction: column !important;
+
 	  }
-	  .select-pose-wrapper {
+	  /* .select-pose-wrapper {
 		top: 200px !important;
-	  }
+	  } */
+	  .row-block-wrapper{
+		flex-direction: column;
+		align-items: center;
+		display: flex;
+	}
+	.row-block-wrapper > button{
+		margin: 2px 0;
+	}
   }
   
 .select-pose-wrapper {
 	display: flex; 
 	position: relative; 
-	top:-65px;
+	top:-100px;
   }
 
 .slides {
 	display: flex;
+}
+/* #slide-2 {
+	flex-direction:row;
+	display: flex;
+  } */
+
+#transparency-palette {
+	margin: 10px 0;
+	max-height: 230px;
+	left: -220px;
+}
+body {
+	user-select: none;
+}
+
+@media(min-width: 1024px){
+	#slide-2 {
+		margin-left: 24px;
+	}
+}
+
+#selected-color {
+	width: 64px;
+    height: 20px;
+	margin-left: 44px;
+}
+
+input[type=range] {
+	-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+	width: 100%; /* Specific width is required for Firefox. */
+	background: transparent; /* Otherwise white in Chrome */
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+  }
+  
+  input[type=range]:focus {
+	outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  }
+  
+  input[type=range]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+	background: transparent; 
+	border-color: transparent;
+	color: transparent;
+  }
+#transparency-palette, #saturation-palette {
+	position: relative;
+    z-index: -10;
+    margin: 10px 0;
+    max-height: 230px;
+    max-width: 20px;
+}
+
+.saturation {
+	z-index: 1;
+    transform: rotate(270deg);
+    position: absolute;
+    height: 20px;
+    top: 105px;
+    left: -105px;
+    width: 230px !important;
+}
+.containerSaturation {
+	position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#saturation_range, #opacity_range {
+	position: relative;
+    left: -126px;
+    top: -120px;
+}
+#saturation_range {
+	left: -346px;
 }
