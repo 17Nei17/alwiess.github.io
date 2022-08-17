@@ -50,8 +50,7 @@
             <!-- БЛОК С ФОНОМ ЗА КОТОМ -->
             <div id="field" style="background: url(spacoj/0.jpg) center no-repeat; background-size: cover;" class="row-cat">
                 <div id="canvacat" class="row cat"></div>
-            </div>
-            <!-- БЛОК С ВЫБОРОМ ФОНА -->
+                <!-- БЛОК С ВЫБОРОМ ФОНА -->
                 <div id="area">
                     <!-- перечисление доступных фонов -->
                         <div style="background: #FFDEAD;" class="field_palette"></div>
@@ -65,6 +64,7 @@
                         <div style="background: url(spacoj/6.jpg); background-size: 200%;" class="field_palette"></div>
                         <div style="background: url(spacoj/7.jpg); background-size: 200%;" class="field_palette"></div>
                 </div>
+            </div>
             <div class="select-pose-wrapper">
                 <div id="minusCount" onclick="Kns.minusCount();"></div>
                 <div id="countHeader">Переключение поз</div>
@@ -97,7 +97,6 @@
                 </div>
             </div>
         </div>
-
         <!-- ХРЕНЬ НИЖЕ ПАЛИТРЫ -->
         <div class="info" style="max-width: 700px;">
         </div>
@@ -118,8 +117,10 @@
             <div class="row-column">
                 <div class="list-header">Код окраса:</div>
                 <div class="row-block-wrapper">
-                    <input id="code" onchange="Kns.parseCode(this);" class="output-code">
-                    <button onclick="Kns.copyCode();" class="btn-kns copy" title="Копировать окрас">c</button>
+                    <div class="code-element-wrap">
+                        <input id="code" onchange="Kns.parseCode(this);" class="output-code">
+                        <button onclick="Kns.copyCode();" class="btn-kns copy" title="Копировать окрас">c</button>
+                    </div>
                     <div>
                         <input type="submit" value="Сохранить" id="sbm" class="btn-kns">
                         <input type="button" id="reset" value="Сбросить" class="btn-kns">

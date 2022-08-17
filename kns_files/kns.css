@@ -47,7 +47,7 @@ td {
 }
 #details-list {
 	width: 100%;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 }
 
 #title {
@@ -70,8 +70,6 @@ td {
 }
 #selected-item-wrapper{
 	min-width: 150px;
-	/* margin-left: 12px; */
-    margin-right: 12px;
 }
 #selected-item-wrapper .row-column {
 	background-color: #FFE4C4;
@@ -102,14 +100,12 @@ td {
 	margin: 0;
 }
 #area {
-	border-collapse: separate;
-	border-spacing: 0 1px;
-	display: flex;
-    flex-direction: row;
+    border-collapse: separate;
+    border-spacing: 0 1px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-	position: relative;
-    top: -41px;
+    align-items: end;
 }
 .tabledetail div {
 	width: 33px;
@@ -133,8 +129,6 @@ td {
 	border-width: 1px;
 	border-style: solid;
 	box-sizing: border-box;
-	width: 35px;
-	height: 35px;
 }
 #lock {
 	cursor: pointer;
@@ -168,6 +162,10 @@ td.td_plus {
 	text-align: left;
 	padding-left: 5px;
 }
+.td_plus {
+	text-align: center;
+	width: 100%;
+}
 .detailslist {
 	border: 0;
 	/*width: 125px;*/
@@ -193,6 +191,9 @@ input {
 .row, .row-cat, .row-detail, .row-color, .container-panel, .elem-row {
 	display: -webkit-flex;
 	display: flex;
+}
+.elem-row > div:hover {
+	color: red;
 }
 .cat_dis {
 	position: relative;
@@ -295,7 +296,7 @@ input {
 .cat{
 	min-width: 270px;
 }
-.row-color{
+.row-color {
 	margin: 10px 0px;
 	max-width: 320px;
 	height: fit-content;
@@ -305,7 +306,7 @@ input {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 }
-.elem-row{
+.elem-row {
 	align-content: flex-start;
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
@@ -463,8 +464,8 @@ input[type=range]::-ms-track {
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: 1px solid #d19405;
-    height: 18px;
-    width: 18px;
+    height: 26px;
+    width: 10px;
     border-radius: 8px;
     background: #fece2f;
     cursor: pointer;
@@ -474,8 +475,8 @@ input[type=range]::-webkit-slider-thumb {
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
     border: 1px solid #d19405;
-    height: 18px;
-    width: 18px;
+    height: 26px;
+    width: 10px;
     border-radius: 8px;
     background: #fece2f;
     cursor: pointer;
@@ -484,8 +485,8 @@ input[type=range]::-moz-range-thumb {
 /* All the same stuff for IE */
 input[type=range]::-ms-thumb {
     border: 1px solid #d19405;
-    height: 18px;
-    width: 18px;
+    height: 26px;
+    width: 10px;
     border-radius: 8px;
     background: #fece2f;
     cursor: pointer;
@@ -578,6 +579,10 @@ input[type=range]:focus::-ms-fill-upper {
 
 
 @media (max-width: 768px){
+	.field_palette {
+		width: 27px;
+		height: 27px;
+	}
 	#blocks{
 		width: 100%;
 	}
@@ -600,7 +605,7 @@ input[type=range]:focus::-ms-fill-upper {
 	#selected-item-wrapper{
 		min-width: calc(30% - 24px);
 		margin-left: 12px;
-		margin-right: 12px;
+		/* margin-right: 12px; */
 	}
 	#selected-item-wrapper .row-column, .elem-row{
 		min-height: 270px;
@@ -637,7 +642,7 @@ input[type=range]:focus::-ms-fill-upper {
 		flex-direction: column;
 		
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		max-width:fit-content;
 	  }
@@ -681,12 +686,20 @@ input[type=range]:focus::-ms-fill-upper {
 	.row-block-wrapper > button{
 		margin: 2px 0;
 	}
+	.select-pose-wrapper {
+		top: 275px;
+	}
   }
-  
+@media (min-width: 768px){
+	.select-pose-wrapper {
+		top: 300px;
+	}
+  }
+
 .select-pose-wrapper {
-	display: flex; 
-	position: relative; 
-	top:-100px;
+    display: flex;
+    position: absolute;
+
   }
 
 .slides {
@@ -709,6 +722,10 @@ body {
 @media(min-width: 1024px){
 	#slide-2 {
 		margin-left: 24px;
+	}
+	.field_palette {
+		width: 32px;
+		height: 32px;
 	}
 }
 
@@ -769,4 +786,23 @@ input[type=range] {
 }
 #saturation_range {
 	left: -346px;
+}
+.code-element-wrap {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-bottom: 4px;
+	justify-content: center;
+}
+
+.row-column.centered {
+    display: flex;
+    align-items: center;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.row-column.centered  .container-panel {
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
 }

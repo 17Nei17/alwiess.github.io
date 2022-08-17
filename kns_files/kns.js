@@ -687,7 +687,7 @@ var initAll = function(data) {
 			if (selectedList.length < max && selectedList.length < info.length) {
 				canAdd = true;
 			}
-			html += '<div id="selected-item-wrapper"><div class="list-header">Выбрано</div><div class="row-column">';
+			html += '<div id="selected-item-wrapper"><div class="list-header">Выбрано</div><div class="row-column centered">';
 			for (var i = 0; i < selectedList.length; i++) {
 				var style = i != dataNum ? '' : ' class="sel"';
 				var moveup = '';
@@ -1162,9 +1162,9 @@ var initAll = function(data) {
 				continue;
 			}
 			if (Kns.palette[p].circle && colour) {
-				var deltaX = Kns.smolCircleR * 7, deltaY = Kns.smolCircleR;
+				var deltaX = Kns.smolCircleR , deltaY = Kns.smolCircleR;
 				// var deltaX = Kns.smolCircleR, deltaY = Kns.smolCircleR;
-				var tHeight = (Kns.circleR + deltaY) * 2, tWidth = Kns.smolCircleR * 6 + (Kns.circleR + Kns.smolCircleR) * 2;
+				var tHeight = (Kns.circleR + deltaY) * 2, tWidth = Kns.smolCircleR + (Kns.circleR + Kns.smolCircleR) * 2;
 
 				var canvasCtx = document.getElementById("palettebuffer_work").getContext('2d');
 				var paletteCtx = document.getElementById('circle_palette_' + p).getContext('2d');
@@ -1301,23 +1301,23 @@ var initAll = function(data) {
 			whiteGrad.addColorStop(0, "rgba(255,255,255,1)");
 			whiteGrad.addColorStop(1, "rgba(255,255,255,0.1)");
 			saturationCtx.fillStyle = "white";
-			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
+			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
 
 			if(transparencyCtx){
 				transparencyCtx.fillStyle = grad;
-				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
+				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
 				transparencyCtx.globalAlpha = opacity; 
 				transparencyCtx.fillStyle = whiteGrad;
-				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
+				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
 			}
 
 			saturationCtx.fillStyle = grad;
-			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
+			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
 			saturationCtx.globalAlpha = opacity; 
 		}
 		if (complete) {
 			// finalCtx.drawImage(target_left, Kns.smolCircleR * 2, brightness + Kns.smolCircleR - target_left.width / 2);
-			finalCtx.drawImage(target_right, Kns.smolCircleR * 7 + Kns.circleR + radius * Math.cos(angle) - target_right.width / 2, Kns.smolCircleR + Kns.circleR + radius * Math.sin(angle) - target_right.width / 2);
+			finalCtx.drawImage(target_right, Kns.smolCircleR + Kns.circleR + radius * Math.cos(angle) - target_right.width / 2, Kns.smolCircleR + Kns.circleR + radius * Math.sin(angle) - target_right.width / 2);
 		}
 		finalCtx.scale(1, 1);
 	};
@@ -1878,7 +1878,7 @@ var initAll = function(data) {
 		}
 
 		var dx, dy;
-		dx = x - (Kns.smolCircleR * 7 + Kns.circleR);
+		dx = x - (Kns.smolCircleR + Kns.circleR);
 		dy = y - (Kns.smolCircleR + Kns.circleR);
 
 
