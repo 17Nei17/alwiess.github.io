@@ -194,6 +194,11 @@ input {
 }
 .elem-row > div:hover {
 	color: red;
+	opacity: 0.8;
+}
+.part-item:hover{
+	color:red !important;
+	opacity: 0.8;
 }
 .cat_dis {
 	position: relative;
@@ -464,8 +469,6 @@ input[type=range]::-ms-track {
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: 1px solid #d19405;
-    height: 26px;
-    width: 10px;
     border-radius: 8px;
     background: #fece2f;
     cursor: pointer;
@@ -475,8 +478,6 @@ input[type=range]::-webkit-slider-thumb {
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
     border: 1px solid #d19405;
-    height: 26px;
-    width: 10px;
     border-radius: 8px;
     background: #fece2f;
     cursor: pointer;
@@ -485,8 +486,6 @@ input[type=range]::-moz-range-thumb {
 /* All the same stuff for IE */
 input[type=range]::-ms-thumb {
     border: 1px solid #d19405;
-    height: 26px;
-    width: 10px;
     border-radius: 8px;
     background: #fece2f;
     cursor: pointer;
@@ -579,6 +578,22 @@ input[type=range]:focus::-ms-fill-upper {
 
 
 @media (max-width: 768px){
+	input[type=range]::-webkit-slider-thumb {
+		height: 36px;
+		width: 18px;
+	}
+	
+	/* All the same stuff for Firefox */
+	input[type=range]::-moz-range-thumb {
+		height: 36px;
+		width: 18px;
+	}
+	
+	/* All the same stuff for IE */
+	input[type=range]::-ms-thumb {
+		height: 36px;
+		width: 18px;
+	}
 	.field_palette {
 		width: 27px;
 		height: 27px;
@@ -671,7 +686,7 @@ input[type=range]:focus::-ms-fill-upper {
 		position: relative;
 	  }
 	  #slide-2 {
-		min-width: calc(100vw - 16px);
+		/* min-width: calc(100vw - 16px); */
 		flex-direction: column !important;
 
 	  }
@@ -691,6 +706,22 @@ input[type=range]:focus::-ms-fill-upper {
 	}
   }
 @media (min-width: 768px){
+	input[type=range]::-webkit-slider-thumb {
+		height: 30px;
+		width: 12px;
+	}
+	
+	/* All the same stuff for Firefox */
+	input[type=range]::-moz-range-thumb {
+		height: 30px;
+		width: 12px;
+	}
+	
+	/* All the same stuff for IE */
+	input[type=range]::-ms-thumb {
+		height: 30px;
+		width: 12px;
+	}
 	.select-pose-wrapper {
 		top: 300px;
 	}
@@ -713,7 +744,7 @@ input[type=range]:focus::-ms-fill-upper {
 #transparency-palette {
 	margin: 10px 0;
 	max-height: 230px;
-	left: -220px;
+	left: -200px;
 }
 body {
 	user-select: none;
@@ -785,7 +816,7 @@ input[type=range] {
     top: -120px;
 }
 #saturation_range {
-	left: -346px;
+	left: -325px;
 }
 .code-element-wrap {
 	display: flex;

@@ -595,7 +595,7 @@ var initAll = function(data) {
 					if (!Kns.parts[n].name) {
 						continue;
 					}
-					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div style="background: url(cats/palette/6.png) center; height: 50px; width: 35px; margin: 2px; color:white;">' + Kns.parts[n].name + '</div></a></div>'
+					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div class="part-item" style="background: url(cats/palette/6.png) center; height: 50px; width: 35px; margin: 2px; color:white;">' + Kns.parts[n].name + '</div></a></div>'
 				}
 			}
 
@@ -1117,8 +1117,8 @@ var initAll = function(data) {
 	}
 
 	Kns.mouseUp = function(evt) {
-		Kns.isMouseDown = false;
-		Kns.circlePaletteClicked(evt);
+			Kns.isMouseDown = false;
+			Kns.circlePaletteClicked(evt);
 	}
 	Kns.drawPalette = function() {
 		var html = '';
@@ -1183,7 +1183,7 @@ var initAll = function(data) {
 					id = pList[j].id;
 				}
 				
-				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);"  ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);" data-detail="' + id + '"></canvas></div>';
+				var htmlTop = '<div id="show_palette_' + p + '" style="white-space:nowrap;"><canvas class="palette" height="' + tHeight + '" width="'+ tWidth + '"onmousedown="Kns.mouseDown(event);" onmouseup="Kns.mouseUp(event);"  ontouchmove="Kns.circlePaletteOnMouseMove(event);" onmousemove="Kns.circlePaletteOnMouseMove(event);" onmouseout="Kns.mouseUp(event);"  data-detail="' + id + '"></canvas></div>';
 				colourCircle.append(htmlTop);
 				var selectedColor = "<input id='selected-color' value="+colour+">";
 				colourCircle.append(selectedColor);
@@ -1257,14 +1257,11 @@ var initAll = function(data) {
 		var radius = props[0] * Kns.circleR / 100;
 
 		finalCtx.canvas.width++;finalCtx.canvas.width--;
-		
-		// saturationCtx.scale(Kns.paletteScale, Kns.paletteScale);
 
 		finalCtx.scale(Kns.paletteScale, Kns.paletteScale);
 
 		finalCtx.drawImage(paletteCtx.canvas, 0, 0);
 
-		// saturationCtx.drawImage(paletteCtx.canvas, 0, 0);
 		var i;
 		for (i = 1; i < palette.colours.length; i++) {
 			if (props[1] >= palette.colours[i - 1].point && props[1] <= palette.colours[i].point) {
@@ -1301,18 +1298,18 @@ var initAll = function(data) {
 			whiteGrad.addColorStop(0, "rgba(255,255,255,1)");
 			whiteGrad.addColorStop(1, "rgba(255,255,255,0.1)");
 			saturationCtx.fillStyle = "white";
-			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
+			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 50, (Kns.circleR * 2) + 20);
 
 			if(transparencyCtx){
 				transparencyCtx.fillStyle = grad;
-				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
+				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 50, (Kns.circleR * 2) + 20);
 				transparencyCtx.globalAlpha = opacity; 
 				transparencyCtx.fillStyle = whiteGrad;
-				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 3, (Kns.circleR * 2) + 20);
+				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 50, (Kns.circleR * 2) + 20);
 			}
 
 			saturationCtx.fillStyle = grad;
-			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 3, (Kns.circleR * 2) + 20);
+			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 50, (Kns.circleR * 2) + 20);
 			saturationCtx.globalAlpha = opacity; 
 		}
 		if (complete) {
@@ -1851,6 +1848,7 @@ var initAll = function(data) {
 	}
 
 	Kns.brightnessClicked = function(value){
+		console.log(value)
 		var dataNum = 0;
 		if (!Kns.parts[Sel.now].noCombine) {
 			dataNum = $(".sel").attr("data-num");
@@ -1894,10 +1892,11 @@ var initAll = function(data) {
 
 		dx = x - (Kns.smolCircleR * 2);
 		dy = y - (Kns.smolCircleR);
-		if (dx >= 0 && dx <= Kns.smolCircleR && dy >= 0 && dy <= Kns.circleR * 2) {
-			var brightness = dy / (Kns.circleR * 2);
-			props[2] = (1 - brightness) * 100;
-		}
+		//эти строки порождали баг когда выбиралась "цветность" при кликах слева от палитры. Выбор цвета перенесен на другой инпут
+		// if (dx >= 0 && dx <= Kns.smolCircleR && dy >= 0 && dy <= Kns.circleR * 2) {
+		// 	var brightness = dy / (Kns.circleR * 2);
+		// 	props[2] = (1 - brightness) * 100;
+		// }
 
 		for (var i = 0; i < props.length; i++) {
 			props[i] = Math.round(props[i]);
