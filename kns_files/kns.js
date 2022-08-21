@@ -1118,7 +1118,9 @@ var initAll = function(data) {
 
 	Kns.mouseUp = function(evt) {
 			Kns.isMouseDown = false;
-			Kns.circlePaletteClicked(evt);
+			if(evt.target == document.querySelector("#show_palette_0 > canvas.palette")){
+				Kns.circlePaletteClicked(evt);
+			}	
 	}
 	Kns.drawPalette = function() {
 		var html = '';
