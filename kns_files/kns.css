@@ -180,8 +180,8 @@ input {
 	width: 100%;
 }
 #opacity_range {
-	/* width: 200px; */
-	/* display: inline-block; */
+	width: 200px;
+	display: inline-block;
 }
 #opacity_value {
 	margin-left: 4px;
@@ -808,11 +808,11 @@ input[type=range] {
 .saturation {
 	z-index: 1;
     /* transform: rotate(270deg); */
-    /* position: absolute; */
-    /* height: 20px;
+    position: absolute;
+    height: 20px;
     top: 105px;
     left: -105px;
-    width: 230px !important; */
+    width: 230px !important;
 }
 .containerSaturation {
 	position: relative;
@@ -821,15 +821,11 @@ input[type=range] {
     align-items: center;
 }
 #saturation_range, #opacity_range {
-	/* position: relative;
+	position: relative;
     left: -126px;
-    top: -120px; */
-	-webkit-appearance: none;
-	/* writing-mode: bt-lr; */
-	/* -moz-appearance: slider-vertical;
-	appearance: slider-vertical; */
-	height: 20px;
-	width: 230px;
+    top: -120px;
+	-webkit-appearance: slider-vertical;
+	height: 230px;
 }
 #saturation_range {
 	left: -325px;
@@ -855,12 +851,3 @@ input[type=range] {
 	justify-content: space-between;
 }
 
-.inputwrap {
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(90deg);
-    left: 145px;
-    position: absolute;
-    top: 540px;
-}
