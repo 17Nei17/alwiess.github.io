@@ -1247,7 +1247,7 @@ var initAll = function(data) {
 			$(".palette").after("<canvas id='transparency-palette' height='230' width='20'></canvas><input id='saturation_range' type='range' max='100' min='50' step='5' value='100' onchange='Kns.selectedOpacity(this.value);' oninput='Kns.selectedOpacity(this.value);' id='opacity_range' class='saturation'>");
 			var transparencyCtx = $("#transparency-palette")[0].getContext('2d');
 		}
-		$(".palette").after("<canvas id='saturation-palette' height='230' width='20'></canvas><input oninput='Kns.brightnessClicked(this.value, event)' onchange='Kns.brightnessClicked(this.value , event);' type='range' max='100' min='0' step='1' value="+props[2]+" id='opacity_range' class='saturation'>");
+		$(".palette").after("<canvas id='saturation-palette' height='230' width='20'></canvas><input oninput='Kns.brightnessClicked(this.value, event, true)' onchange='Kns.brightnessClicked(this.value , event, false);' type='range' max='100' min='0' step='1' value="+props[2]+" id='opacity_range' class='saturation'>");
 		var saturationCtx = $("#saturation-palette")[0].getContext('2d');
 		var finalCtx = $(".palette", "#show_palette_" + p)[0].getContext('2d');
 		var paletteCtx = document.getElementById("palettebuffer_work").getContext('2d');
@@ -1851,7 +1851,13 @@ var initAll = function(data) {
 		Kns.circlePaletteUpdated(x, y, evt.target);
 	}
 
-	Kns.brightnessClicked = function(value, e){
+	Kns.brightnessClicked = function(value, e, isNeedStopScroll){
+		if(isNeedStopScroll){
+			document.querySelector("body").style.overflow = "hidden";
+		}
+		else {
+			document.querySelector("body").style.overflow = "auto";
+		}
 		e.stopPropagation();
 		var dataNum = 0;
 		if (!Kns.parts[Sel.now].noCombine) {
