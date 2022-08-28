@@ -1105,7 +1105,7 @@ var initAll = function(data) {
 			  }, timeout);
 			};
 		  }
-		const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 1);
+		const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 0);
 		if(Kns.isMouseDown){
 			throttledOnMouseMove();
 		}
@@ -1303,11 +1303,13 @@ var initAll = function(data) {
 			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 50, (Kns.circleR * 2) + 20);
 
 			if(transparencyCtx){
+			
+			
 				transparencyCtx.fillStyle = grad;
 				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 50, (Kns.circleR * 2) + 20);
 				transparencyCtx.globalAlpha = opacity; 
-				transparencyCtx.fillStyle = whiteGrad;
-				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 50, (Kns.circleR * 2) + 20);
+				var img = document.getElementById('transparencyING');
+				transparencyCtx.drawImage(img, 0, -5, 20, 230);
 			}
 
 			saturationCtx.fillStyle = grad;
@@ -1926,4 +1928,5 @@ var initAll = function(data) {
 $(function() {
 	//$.getJSON('./kns_files/kns_def.json', initAll);
 	initAll();
+	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
 });
