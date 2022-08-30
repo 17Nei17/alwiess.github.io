@@ -851,12 +851,12 @@ var initAll = function(data) {
 	};
 
 	Kns.selectedOpacity = function (opacity, e, isNeedStopScroll) {
-		// if(isNeedStopScroll){
-		// 	document.querySelector("body").style.overflow = "hidden";
-		// }
-		// else {
-		// 	document.querySelector("body").style.overflow = "auto";
-		// }
+		if(isNeedStopScroll){
+			document.querySelector("body").style.overflow = "hidden";
+		}
+		else {
+			document.querySelector("body").style.overflow = "auto";
+		}
 		e.stopPropagation();
 		e.preventDefault();
 		var dataNum = Kns.parts[Sel.now].noCombine ? 0 : $(".sel").attr("data-num");
@@ -1860,12 +1860,14 @@ var initAll = function(data) {
 	}
 
 	Kns.brightnessClicked = function(value, e, isNeedStopScroll){
-		// if(isNeedStopScroll){
-		// 	document.querySelector("body").style.overflow = "hidden";
-		// }
-		// else {
-		// 	document.querySelector("body").style.overflow = "auto";
-		// }
+		if(isNeedStopScroll){
+			document.querySelector("html").style.overflow = "scroll";
+			document.querySelector("body").style.overflow = "hidden";
+		}
+		else {
+			document.querySelector("html").style.overflow = "auto";
+			document.querySelector("body").style.overflow = "auto";
+		}
 		e.stopPropagation();
 		e.preventDefault();
 		var dataNum = 0;

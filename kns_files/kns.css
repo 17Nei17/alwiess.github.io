@@ -385,9 +385,9 @@ input {
 	#field {
 		height: 170px;
 	}
-	#detail, #blocks {
+	/* #detail, #blocks {
 		height: 250px;
-	}
+	} */
 	::-webkit-scrollbar{
 		width: 5px;
 		height: 5px;
