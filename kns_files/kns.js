@@ -1255,7 +1255,7 @@ var initAll = function(data) {
 			$(".palette").after("<canvas id='transparency-palette' height='230' width='20'></canvas><input orient='vertical' id='saturation_range' type='range' max='100' min='50' step='5' value='100' onchange='Kns.selectedOpacity(this.value, event, false);' oninput='Kns.selectedOpacity(this.value, event, true);' id='opacity_range' class='saturation'>");
 			var transparencyCtx = $("#transparency-palette")[0].getContext('2d');
 		}
-		$(".palette").after("<canvas id='saturation-palette' height='230' width='20'></canvas><input orient='vertical' oninput='Kns.brightnessClicked(this.value, event, true)' onchange='Kns.brightnessClicked(this.value , event, false);' type='range' max='100' min='0' step='1' value="+props[2]+" id='opacity_range' class='styled-slider'>");
+		$(".palette").after("<canvas id='saturation-palette' height='230' width='20'></canvas><input orient='vertical' oninput='Kns.brightnessClicked(this.value, event, true)' onchange='Kns.brightnessClicked(this.value , event, false);' type='range' max='100' min='0' step='1' value="+props[2]+" id='opacity_range' class='saturation'>");
 		var saturationCtx = $("#saturation-palette")[0].getContext('2d');
 		var finalCtx = $(".palette", "#show_palette_" + p)[0].getContext('2d');
 		var paletteCtx = document.getElementById("palettebuffer_work").getContext('2d');
