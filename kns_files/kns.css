@@ -199,6 +199,12 @@ input {
 	color:red !important;
 	opacity: 0.8;
 }
+.part-item {
+	height: 50px;
+    width: 50px;
+    margin: 2px;
+    color: white;
+}
 .cat_dis {
 	position: relative;
 	width: 100%;
@@ -849,3 +855,11 @@ input[type=range] {
 	justify-content: space-between;
 }
 
+.saved-color {
+	font-size: 12px;
+    border-left: 1px solid white;
+    margin: 0px;
+    border-right: 1px solid white;
+    background: wheat;
+    border-bottom: 1px solid white;
+}

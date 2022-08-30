@@ -595,7 +595,7 @@ var initAll = function(data) {
 					if (!Kns.parts[n].name) {
 						continue;
 					}
-					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div class="part-item" style="background: url(cats/palette/6.png) center; height: 50px; width: 35px; margin: 2px; color:white;">' + Kns.parts[n].name + '</div></a></div>'
+					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div class="part-item" style="background: url(cats/palette/6.png) center;">' + Kns.parts[n].name + '</div></a></div>'
 				}
 			}
 
@@ -1126,9 +1126,9 @@ var initAll = function(data) {
 
 	Kns.mouseUp = function(evt) {
 			Kns.isMouseDown = false;
-			if(evt.target == document.querySelector("#show_palette_0 > canvas.palette")){
-				Kns.circlePaletteClicked(evt);
-			}	
+			// if(evt.target == document.querySelector("#show_palette_0 > canvas.palette")){
+			// 	Kns.circlePaletteClicked(evt);
+			// }	
 	}
 	Kns.drawPalette = function() {
 		var html = '';
@@ -1933,9 +1933,33 @@ var initAll = function(data) {
 		}
 
 		Kns.cleanMain(Sel.now);
+		if (x > 16 && x < 210 && y > 15 && y < 210) {
+			Kns.saveSelectedColor(Sel.main[Sel.now][dataNum].colour, Sel.main[Sel.now][dataNum].id, Sel.now, x, y);
+		}
+
 		Kns.refresh(false, true, false, false, true);
 	}
-
+	Kns.saveSelectedColor = function(color,id,dataDetail,x,y) {
+		console.log(x,y);
+		const context = document.querySelector("#show_palette_0 > canvas.palette").getContext('2d');
+		const data = context.getImageData(x, y, 1, 1).data;
+		console.log(data);
+		if(document.querySelector("#saved-color-"+id+dataDetail+"")){
+			document.querySelector("#saved-color-"+id+dataDetail+"").remove();
+			document.querySelector("#part"+dataDetail+"").innerHTML += "<p style='background-color: rgba("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+");' onclick='Kns.setSelectedColor("+x+","+y+");' class='saved-color' id=saved-color-"+id+dataDetail+">"+color+"</p>";
+		} else {
+			document.querySelector("#part"+dataDetail+"").innerHTML += "<p onclick='Kns.setSelectedColor("+x+","+y+");' class='saved-color' id=saved-color-"+id+dataDetail+">"+color+"</p>";
+		}
+	}
+	Kns.setSelectedColor = function(x,y) {
+		// document.querySelector("#show_palette_0 > canvas.palette");
+		// Kns.cleanMain(Sel.now);
+		// Kns.saveSelectedColor(color, Sel.nowSelected, Sel.now)
+		// Kns.refresh(false, true, false, false, true);
+		// Sel.nowSelected; тут номер блока
+		// Sel.now тут номер части тела 
+		Kns.circlePaletteUpdated(x,y, document.querySelector("#show_palette_0 > canvas.palette"));
+	}
 	Kns.start();
 
 	window.onresize = Kns.drawPalette;
