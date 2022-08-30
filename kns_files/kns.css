@@ -385,9 +385,9 @@ input {
 	#field {
 		height: 170px;
 	}
-	/* #detail, #blocks {
+	#detail, #blocks {
 		height: 250px;
-	} */
+	}
 	::-webkit-scrollbar{
 		width: 5px;
 		height: 5px;
@@ -807,7 +807,7 @@ input[type=range] {
 
 .saturation {
 	z-index: 1;
-    /* transform: rotate(270deg); */
+    transform: rotate(270deg);
     position: absolute;
     height: 20px;
     top: 105px;
@@ -824,8 +824,6 @@ input[type=range] {
 	position: relative;
     left: -126px;
     top: -120px;
-	-webkit-appearance: slider-vertical;
-	height: 230px;
 }
 #saturation_range {
 	left: -325px;
