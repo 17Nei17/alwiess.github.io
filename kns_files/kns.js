@@ -851,12 +851,12 @@ var initAll = function(data) {
 	};
 
 	Kns.selectedOpacity = function (opacity, e, isNeedStopScroll) {
-		if(isNeedStopScroll){
-			document.querySelector("body").style.overflow = "hidden";
-		}
-		else {
-			document.querySelector("body").style.overflow = "auto";
-		}
+		// if(isNeedStopScroll){
+		// 	document.querySelector("body").style.overflow = "hidden";
+		// }
+		// else {
+		// 	document.querySelector("body").style.overflow = "auto";
+		// }
 		e.stopPropagation();
 		e.preventDefault();
 		var dataNum = Kns.parts[Sel.now].noCombine ? 0 : $(".sel").attr("data-num");
@@ -1860,12 +1860,12 @@ var initAll = function(data) {
 	}
 
 	Kns.brightnessClicked = function(value, e, isNeedStopScroll){
-		if(isNeedStopScroll){
-			document.querySelector("body").style.overflow = "hidden";
-		}
-		else {
-			document.querySelector("body").style.overflow = "auto";
-		}
+		// if(isNeedStopScroll){
+		// 	document.querySelector("body").style.overflow = "hidden";
+		// }
+		// else {
+		// 	document.querySelector("body").style.overflow = "auto";
+		// }
 		e.stopPropagation();
 		e.preventDefault();
 		var dataNum = 0;
@@ -1943,4 +1943,7 @@ var initAll = function(data) {
 $(function() {
 	//$.getJSON('./kns_files/kns_def.json', initAll);
 	initAll();
+	document.addEventListener('touchmove', function (event) {
+		if (event.scale && event.scale !== 1) { event.preventDefault(); }
+	  }, false);
 });
