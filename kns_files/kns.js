@@ -595,7 +595,7 @@ var initAll = function(data) {
 					if (!Kns.parts[n].name) {
 						continue;
 					}
-					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div class="part-item" style="background: url(cats/palette/6.png) center;">' + Kns.parts[n].name + '</div></a></div>'
+					table += '<div id="part' + n + '"><a href="#" class="edit' + n + '"><div class="part-item" style="background: url(cats/palette/6.png) center;">' + Kns.parts[n].name + '</div></a><div class="color-modal-open" id="part' + n + '-color-button" ><div>история</div><div class="color-modal-window"></div></div></div>'
 				}
 			}
 
@@ -1084,8 +1084,6 @@ var initAll = function(data) {
 				ctx2.stroke();
 				ctx2.rotate((Math.PI*2)/colors.length);
 			}
-
-			// return a Pattern so we can use it as fillStyle or strokeStyle
 			ctx.fillStyle = ctx2.createPattern(ctx2.canvas, 'no-repeat');
 			ctx.beginPath();
 			ctx.arc(cX, cY, cR - 1 ,Math.PI*2,0);
@@ -1102,20 +1100,21 @@ var initAll = function(data) {
 		}
 	}
 	Kns.circlePaletteOnMouseMove = function(evt) {
-		function throttle(callee, timeout) {
-			let timer = null;
-			return function perform() {
-			  if (timer) return;
-			  timer = setTimeout(() => {
-				callee(evt);
-				clearTimeout(timer);
-				timer = null;
-			  }, timeout);
-			};
-		  }
-		const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 0);
+		// function throttle(callee, timeout) {
+		// 	let timer = null;
+		// 	return function perform() {
+		// 	  if (timer) return;
+		// 	  timer = setTimeout(() => {
+		// 		callee(evt);
+		// 		clearTimeout(timer);
+		// 		timer = null;
+		// 	  }, timeout);
+		// 	};
+		//   }
+		// const throttledOnMouseMove = throttle(Kns.circlePaletteClicked, 0);
 		if(Kns.isMouseDown){
-			throttledOnMouseMove();
+			// throttledOnMouseMove();
+			Kns.circlePaletteClicked(evt);
 		}
 	}
 
@@ -1311,8 +1310,6 @@ var initAll = function(data) {
 			saturationCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR + 50, (Kns.circleR * 2) + 20);
 
 			if(transparencyCtx){
-			
-			
 				transparencyCtx.fillStyle = grad;
 				transparencyCtx.fillRect(Kns.smolCircleR - 15, Kns.smolCircleR - 10, Kns.smolCircleR  + 50, (Kns.circleR * 2) + 20);
 				transparencyCtx.globalAlpha = opacity; 
@@ -1325,6 +1322,7 @@ var initAll = function(data) {
 			saturationCtx.globalAlpha = opacity; 
 		}
 		if (complete) {
+			
 			// finalCtx.drawImage(target_left, Kns.smolCircleR * 2, brightness + Kns.smolCircleR - target_left.width / 2);
 			finalCtx.drawImage(target_right, Kns.smolCircleR + Kns.circleR + radius * Math.cos(angle) - target_right.width / 2, Kns.smolCircleR + Kns.circleR + radius * Math.sin(angle) - target_right.width / 2);
 		}
@@ -1878,6 +1876,9 @@ var initAll = function(data) {
 		props[2] = value;
 		Sel.main[Sel.now][dataNum].colour = props.join(":");
 		document.querySelector("#selected-color").value = Sel.main[Sel.now][dataNum].colour;
+
+		Kns.saveSelectedColor(value, Sel.main[Sel.now][dataNum].id, Sel.now);
+		document.querySelector("#opacity_range").value = value;
 		Kns.refresh(false, false, true, true, true, false, true);
 	}
 
@@ -1934,31 +1935,29 @@ var initAll = function(data) {
 
 		Kns.cleanMain(Sel.now);
 		if (x > 16 && x < 210 && y > 15 && y < 210) {
-			Kns.saveSelectedColor(Sel.main[Sel.now][dataNum].colour, Sel.main[Sel.now][dataNum].id, Sel.now, x, y);
+			Kns.saveSelectedColor(props[2], Sel.main[Sel.now][dataNum].id, Sel.now, x, y);
 		}
 
 		Kns.refresh(false, true, false, false, true);
 	}
-	Kns.saveSelectedColor = function(color,id,dataDetail,x,y) {
-		console.log(x,y);
+	Kns.saveSelectedColor = function(brightness,id,dataDetail,x,y) {
+		if(!x && !y && document.querySelector("#saved-color-"+id+dataDetail+"")){
+			document.querySelector("#saved-color-"+id+dataDetail+"").style.filter = "brightness("+brightness+"%)";
+			return;
+		}
 		const context = document.querySelector("#show_palette_0 > canvas.palette").getContext('2d');
 		const data = context.getImageData(x, y, 1, 1).data;
-		console.log(data);
 		if(document.querySelector("#saved-color-"+id+dataDetail+"")){
-			document.querySelector("#saved-color-"+id+dataDetail+"").remove();
-			document.querySelector("#part"+dataDetail+"").innerHTML += "<p style='background-color: rgba("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+");' onclick='Kns.setSelectedColor("+x+","+y+");' class='saved-color' id=saved-color-"+id+dataDetail+">"+color+"</p>";
+			document.querySelector("#saved-color-"+id+dataDetail+"").outerHTML = "<p style='background-color: rgba("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+"); filter: brightness("+brightness+"%);' data-brightness="+brightness+" onclick='Kns.setSelectedColor("+x+","+y+","+brightness+");' class='saved-color' id=saved-color-"+id+dataDetail+"></p>";
+			document.querySelector("#part"+dataDetail+"").style = "display:block"; 
 		} else {
-			document.querySelector("#part"+dataDetail+"").innerHTML += "<p onclick='Kns.setSelectedColor("+x+","+y+");' class='saved-color' id=saved-color-"+id+dataDetail+">"+color+"</p>";
+			document.querySelector("#part"+dataDetail+"-color-button").style = "display:block";
+			document.querySelector("#part"+dataDetail+" .color-modal-window").innerHTML += "<p style='background-color: rgba("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+"); filter: brightness("+brightness+"%);' data-brightness="+brightness+" onclick='Kns.setSelectedColor("+x+","+y+","+brightness+");' class='saved-color' id=saved-color-"+id+dataDetail+"></p>";
 		}
 	}
-	Kns.setSelectedColor = function(x,y) {
-		// document.querySelector("#show_palette_0 > canvas.palette");
-		// Kns.cleanMain(Sel.now);
-		// Kns.saveSelectedColor(color, Sel.nowSelected, Sel.now)
-		// Kns.refresh(false, true, false, false, true);
-		// Sel.nowSelected; тут номер блока
-		// Sel.now тут номер части тела 
+	Kns.setSelectedColor = function(x,y, brightness) {
 		Kns.circlePaletteUpdated(x,y, document.querySelector("#show_palette_0 > canvas.palette"));
+		Kns.brightnessClicked(event.target.dataset.brightness, event);
 	}
 	Kns.start();
 

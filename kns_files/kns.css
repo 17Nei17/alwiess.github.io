@@ -201,7 +201,7 @@ input {
 }
 .part-item {
 	height: 50px;
-    width: 50px;
+    width: 42px;
     margin: 2px;
     color: white;
 }
@@ -230,10 +230,11 @@ input {
 	width: 100%;
 }
 #blocks{
+	overflow: inherit;
 	display: flex;
     flex-direction: row;
 	width: 100%;
-	overflow-y: auto;
+	/* overflow-y: auto; */
 	min-width: 150px;
 	border: 1px solid #AD8446;
 	padding: 5px; /* Поля вокруг текста */
@@ -856,10 +857,48 @@ input[type=range] {
 }
 
 .saved-color {
-	font-size: 12px;
-    border-left: 1px solid white;
+    border: 1px solid white;
     margin: 0px;
-    border-right: 1px solid white;
     background: wheat;
-    border-bottom: 1px solid white;
+	width: 25px;
+    border-radius: 50%;
+    height: 25px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.saved-color:hover {
+	border: 1px solid red;
+}
+.color-modal-open {
+	position: relative;
+	display: none;
+	font-size: 10px;
+	height: 20px;
+	background-color: rgb(215, 182, 128);
+    border: 1px solid #AD8446;
+	margin: auto;
+	text-align: center;
+}
+
+.color-modal-window {
+	position: absolute;
+	background: burlywood;
+    display: none;
+    width: 42px;
+	height: auto;
+    margin-top: 10px;
+    z-index: 10;
+    align-items: center;
+	border: 1px solid #AD8446;
+}
+
+.color-modal-open:hover .color-modal-window {
+    display:block;
+}
+
+.color-history {
+	position: relative;
+	display: inline-block;
 }
