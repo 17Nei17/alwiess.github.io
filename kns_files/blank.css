@@ -1,56 +1,55 @@
 body {
 	color: #111;
-	background-color: #FFDEAD;
+	background-color: #ffdead;
 	font-size: 14px;
 	font-family: Verdana;
 }
-
 a {
 	outline: none;
-	color: black;
+	color: #000;
 	text-decoration: underline;
 }
-
 a:hover {
 	text-decoration: none;
-	color: #06F;
+	color: #06f;
 }
-
 input {
-	background: #FFE;
+	background: #ffe;
 }
-
 table {
 	border-collapse: collapse;
 }
-
 td {
 	vertical-align: top;
 }
-
-.d, .e, .f, .d div, .e div, .f div {
+.d,
+.e,
+.f,
+.d div,
+.e div,
+.f div {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	border: none;
 	padding: 0;
 	margin: 0;
+	position: relative;
 }
-
-.d, .d div {
+.d,
+.d div {
 	width: 100px;
 	height: 150px;
 }
-
-.e, .e div {
+.e,
+.e div {
 	width: 32px;
 	height: 32px;
 }
-
-.f, .f div {
+.f,
+.f div {
 	width: 70px;
 	height: 70px;
 }
-
 #error {
 	cursor: pointer;
 	display: none;
@@ -58,8 +57,9 @@ td {
 	min-height: 50px;
 	border-radius: 10px;
 	padding: 5px;
-	font-weight: bold;
+	font-weight: 700;
 	background-color: RGBA(241, 90, 90, 0.9);
+	color: #000;
 	position: fixed;
 	top: 50%;
 	left: 0.5%;
