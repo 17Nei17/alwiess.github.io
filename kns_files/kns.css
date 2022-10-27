@@ -241,6 +241,8 @@ a:hover {
 	width: 160px;
 }
 
+/* ls */
+
 #error {
 	cursor: pointer;
 	display: none;
@@ -255,97 +257,160 @@ a:hover {
 	left: 0.5%;
 	z-index: 9999;
 }
+
 .active {
 	font-weight: 700;
 }
+
 th {
 	text-align: left;
 }
-tr {
-	border-bottom: 1px solid white;
-	height: 26px;
-	background: RGBA(255, 255, 255, 0.3);
-}
-/* tbody tr:nth-child(even) {
-    background: RGBA(255,255,255,.7);
-} */
 
 #messList {
-	/* background: #fff; */
+	margin: auto;
 	color: #000;
-	width: 90%;
+	width: 100%;
+	max-width: 1024px;
+	border-radius: 10px 10px 0px 0px;
+	overflow: hidden;
+	box-shadow: rgb(220 225 230) 0px 0px 0px 1px;
 }
-/* .msg_notRead {
-	background: #eb8d8d;
-} */
-/* .msg_notRead::before{
-	content: "Не прочитано";
-	color:red;
-}
-.msg_read::before{
-
-	content: "прочитано";
-	color:red;
-} */
-th,
-td {
-	padding-left: 20px;
-	/* border-left: 1px solid white; */
-}
-th:not(:first-child) {
-	border-left: 1px solid white;
-	text-align: center;
-}
-td:not(:first-child) {
-	border-left: 1px solid white;
-	text-align: center;
-}
-th:last-child {
-	text-align: right;
-}
-td:last-child {
-	text-align: right;
+#messList td {
+	vertical-align: middle;
 }
 
-.msg_read td:first-child {
-	background: linear-gradient(to right, mediumseagreen, RGBA(255, 255, 255, 0));
+.del {
+	margin-left: auto;
+	margin-right: auto;
+	background: firebrick;
+	display: block;
 }
-.msg_notRead td:first-child {
-	/* background: #eb8d8d; */
-	background: linear-gradient(to right, #eb8d8d, RGBA(255, 255, 255, 0));
+#msg_subject {
+	font-weight: bold;
 }
-.msg_booked td:first-child {
-	background: linear-gradient(to right, #99a, RGBA(255, 255, 255, 0));
+.parsed img {
+	width: 100%;
 }
-/* .msg_booked {
-	background: #99a;
-} */
-#messList a {
-	color: #0000cd;
+
+.msg_icon {
+	width: 30px;
 }
+.msg_icon > span {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.msg_icon.msg_read > span {
+	background-color: #ff0000;
+}
+.msg_icon.msg_notRead > span {
+	background-color: #00ff29;
+}
+.msg_icon.msg_booked > span {
+	background-color: #99a;
+}
+
 #msg_table {
 	width: 90%;
 	max-width: 500px;
 }
+
 #msg_info {
 	max-width: 200px;
-	min-height: 150px;
+    min-height: 150px;
+	min-width: 100px;
+	background-color: rgba(255, 255, 255, 0.2);
 }
+
 #write_div {
 	width: 80%;
 	margin: auto;
 }
+
 #write_div p {
 	margin: 0;
 	margin-bottom: 5px;
 }
+
 #write_div input[type="text"],
 #write_div textarea {
 	width: 100%;
 }
+
 #write_div textarea {
 	height: 300px;
 }
+
 #preview_div {
 	padding-bottom: 5px;
+}
+
+#msg_table tr,
+#messList tr {
+	height: 30px;
+}
+
+#msg_table tr:nth-child(2n),
+#messList tr:nth-child(2n + 1) {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+#msg_table > tr:nth-child(2n + 1),
+#messList > tr:nth-child(2n + 1) {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+#links {
+	text-align: center;
+}
+
+#page_form {
+	width: 100%;
+	max-width: 1024px;
+	margin: auto;
+}
+
+#msg_table {
+	box-shadow: rgb(220 225 230) 0px 0px 0px 1px;
+	border: none;
+	max-width: 1024px;
+	width: 100%;
+	margin: auto;
+	border-radius: 10px 10px 0px 0px;
+	overflow: hidden;
+}
+#msg_table td {
+	border: none;
+	padding: 8px;
+}
+
+#msg_table tr:nth-child(2n + 1) {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+#complain {
+	text-align: right;
+}
+
+a.icon_open {
+	border: 1px solid gray;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 5px;
+	margin: 1px;
+	text-decoration: none;
+	height: 18px;
+	width: 18px;
+	text-align: center;
+	display: inline-block;
+}
+
+#answer,
+#report_support {
+	border: 1px solid gray;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 5px;
+	padding: 2px 12px;
+	text-decoration: none;
+	text-align: center;
 }
