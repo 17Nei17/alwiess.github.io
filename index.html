@@ -1,183 +1,377 @@
 <!DOCTYPE html>
 <!-- saved from url=(0025)https://catwar.su/cw3/kns -->
-<html xmlns="http://www.w3.org/1999/html"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Конструктор окрасов / CatWar</title><noscript>&lt;meta http-equiv="refresh" content="0; URL=/noscript"&gt;</noscript><meta name="viewport" content="width=device-width"><script type="text/javascript" async="" src="./kns_files/watch_ua.js"></script><script>var p = '9b73b7fa022a99bb78b4efc7c4a4f2ca', s = '1920x1080x24', t = '3', u = 'catwar.su', c = '5fc330c14ca9c0f0a040e0e9341636ad', o = '5708d4dfb33cb11068eabafa76535b2e', f = false;</script><link rel="stylesheet" href="./kns_files/blank.css"><link rel="stylesheet" href="./kns_files/jquery-ui.css"><link rel="stylesheet" href="./kns_files/kns.css"><script src="./kns_files/jquery.js"></script><script src="./kns_files/vue.js"></script><script src="./kns_files/jquery-ui.js"></script><script src="./kns_files/kns_def.json"></script><script src="./kns_files/kns.js"></script><script src="./kns_files/ssl.js"></script><script async="" src="./kns_files/all.js"></script><script src="./kns_files/custom-bs4.dist.js"></script> <link rel="stylesheet" type="text/css" href="./kns_files/custom-bs4.dist.css"></head><body>
-<p id="error"></p>
-<div id="main" data-vip="0">
-	<h2>Конструктор окрасов</h2>
-	<label>
-		<input style="margin: 0 0 0 5px;" type="checkbox" onchange="Kns.detailVariant = this.checked ? 1 : 0;Kns.drawDetail();" checked> Иконки элементов
-	</label>
-	<br>
-	<label>
-		<b>Режим</b>
-		<select style="margin: 0 0 0 5px;" onchange="Kns.vip(this.value); Kns.refresh(true, false, false, true);">
-			<option value="0">Обычный КО</option>
-			<option value="1">70 лун</option>
-			<option value="2">70 лун и могущество</option>
-			<option value="3">275 лун</option>
-		</select>
-	</label>
-	<div class="row">
-	<!-- БЛОК С ВЫБОРОМ ТЕЛОСЛОЖЕНИЯ -->
-	<div id="blocks"></div>
+<html xmlns="http://www.w3.org/1999/html">
 
-	<!-- БЛОК С ФОНОМ ЗА КОТОМ -->
-	<div id="field" style="background: url(spacoj/0.jpg) center no-repeat;" class="row-cat">
-		<div id="canvacat" class="row cat"></div>
-		<!-- БЛОК С ВЫБОРОМ ФОНА -->
-		<div style="margin-left: auto;overflow: auto;overflow: overlay; min-width: 30px;">
-			<table id="area">
-				<!-- перечисление доступных фонов -->
-				<tr><td style="background: #FFDEAD;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/0.jpg); background-size: 200%;" class="field_palette selected_field"/></tr>
-				<tr><td style="background: url(spacoj/1.jpg); background-size: 200%;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/2.jpg); background-size: 200%;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/3.jpg); background-size: 200%;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/4.jpg); background-size: 200%;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/5.jpg); background-size: 200%;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/6.jpg); background-size: 200%;" class="field_palette"/></tr>
-				<tr><td style="background: url(spacoj/7.jpg); background-size: 200%;" class="field_palette"/></tr>
-			</table>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Конструктор окрасов / CatWar</title><noscript>&lt;meta http-equiv="refresh" content="0;
+		URL=/noscript"&gt;</noscript>
+	<meta name="viewport" content="width=device-width">
+	<script type="text/javascript" async="" src="./kns_files/watch_ua.js"></script>
+	<script>var p = '9b73b7fa022a99bb78b4efc7c4a4f2ca', s = '1920x1080x24', t = '3', u = 'catwar.su', c = '5fc330c14ca9c0f0a040e0e9341636ad', o = '5708d4dfb33cb11068eabafa76535b2e', f = false;</script>
+	<link rel="stylesheet" href="./kns_files/blank.css">
+	<link rel="stylesheet" href="./kns_files/jquery-ui.css">
+	<link rel="stylesheet" href="./kns_files/kns.css">
+	<script src="./kns_files/jquery.js"></script>
+	<script src="./kns_files/vue.js"></script>
+	<script src="./kns_files/jquery-ui.js"></script>
+	<script src="./kns_files/kns_def.json"></script>
+	<script src="./kns_files/kns.js"></script>
+	<script src="./kns_files/ssl.js"></script>
+	<script async="" src="./kns_files/all.js"></script>
+	<script src="./kns_files/custom-bs4.dist.js"></script>
+	<link rel="stylesheet" type="text/css" href="./kns_files/custom-bs4.dist.css">
+</head>
+
+<body>
+	<p id="error"></p>
+	<div id="main" data-vip="0">
+		<h2>Конструктор окрасов</h2>
+		<label>
+			<input style="margin: 0 0 0 5px;" type="checkbox"
+				onchange="Kns.detailVariant = this.checked ? 1 : 0;Kns.drawDetail();" checked> Иконки элементов
+		</label>
+		<br>
+		<label>
+			<b>Режим</b>
+			<select style="margin: 0 0 0 5px;" onchange="Kns.vip(this.value); Kns.refresh(true, false, false, true);">
+				<option value="0">Обычный КО</option>
+				<option value="1">70 лун</option>
+				<option value="2">70 лун и могущество</option>
+				<option value="3">275 лун</option>
+			</select>
+		</label>
+		<div class="row">
+			<!-- БЛОК С ВЫБОРОМ ТЕЛОСЛОЖЕНИЯ -->
+			<div id="blocks"></div>
+
+			<!-- БЛОК С ФОНОМ ЗА КОТОМ -->
+			<div id="field" style="background: url(spacoj/0.jpg) center no-repeat;" class="row-cat">
+				<div id="canvacat" class="row cat"></div>
+				<!-- БЛОК С ВЫБОРОМ ФОНА -->
+				<div style="margin-left: auto;overflow: auto;overflow: overlay; min-width: 30px;">
+					<table id="area">
+						<!-- перечисление доступных фонов -->
+						<tr>
+							<td style="background: #FFDEAD;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/0.jpg); background-size: 200%;"
+								class="field_palette selected_field" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/1.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/2.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/3.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/4.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/5.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/6.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+						<tr>
+							<td style="background: url(spacoj/7.jpg); background-size: 200%;" class="field_palette" />
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- БЛОК С ЭЛЕМЕНТАМИ -->
+			<div id="detail" class="row-detail"></div>
+			<!-- ПАЛИТРА -->
+			<div id="color" class="row-color"></div>
 		</div>
-	</div>		
-	<!-- БЛОК С ЭЛЕМЕНТАМИ -->
-	<div id="detail" class="row-detail"></div>
-	<!-- ПАЛИТРА -->
-	<div id="color" class="row-color"></div>
-</div>
-<!-- ХРЕНЬ НИЖЕ ПАЛИТРЫ -->
-<div class="info" style="max-width: 700px;">
-	<!-- СОХРАНИТЬ ОКРАС? -->
-	<div id="confirm" style="display:none;"><p id="confirm_text">?</p> 
-		<input type="submit" value="OK" id="confirm_yes" class="btn-kns">
-		<input type="submit" value="Отмена" id="confirm_no" class="btn-kns">
+		<!-- ХРЕНЬ НИЖЕ ПАЛИТРЫ -->
+		<div class="info" style="max-width: 700px;">
+			<!-- СОХРАНИТЬ ОКРАС? -->
+			<div id="confirm" style="display:none;">
+				<p id="confirm_text">?</p>
+				<input type="submit" value="OK" id="confirm_yes" class="btn-kns">
+				<input type="submit" value="Отмена" id="confirm_no" class="btn-kns">
+			</div>
+			<div>
+				<a href="#" id="random">Случайный окрас</a> |
+				<a href="#" id="random2">Очень случайный окрас</a> |
+				<a href="#" data-toggle="modal" data-target="#exampleModalLong">Открыть библиотеку окрасов</a><br>
+				<label><b>Код окраса:</b><input id="code" onchange="Kns.parseCode(this);" class="output-code"><button
+						onclick="Kns.copyCode();" class="btn-kns copy" title="Копировать окрас">c</button></label>
+			</div>
+			<div>
+				<input type="submit" value="Сохранить" id="sbm" class="btn-kns">
+				<input type="button" id="reset" value="Сбросить" class="btn-kns">
+			</div>
+			<p><b>Поскольку вам больше 275 лун и вы только что переродились, вы обладаете невероятно редкой возможностью
+					выбрать гетерохромию, один из особых окрасов и/или фиолетовые глаза. Поспешите: это возможно только
+					до 0.5 лун после перерождения.</b></p>
+
+		</div>
+		<p>Каждая кнопка сохраняет одну из поз:</p>
+		<p>
+			<input type="button" id="getPng" onclick="Kns.Png_cat_0();" value="Png_cat_0" class="btn-kns">
+			<input type="button" id="getPng" onclick="Kns.Png_cat_1();" value="Png_cat_1" class="btn-kns">
+			<input type="button" id="getPng" onclick="Kns.Png_cat__1();" value="Png_cat__1" class="btn-kns">
+			<input type="button" id="getPng" onclick="Kns.Png_cat_5();" value="Png_cat_5" class="btn-kns">
+			<input type="button" id="getPng" onclick="Kns.Png_cat_2();" value="Png_cat_2" class="btn-kns">
+		</p>
+
+		<input type="button" id="getPng" onclick="Kns.getPng();" value="Сохранить png в один файл" class="btn-kns">
+
+		<!-- Modal -->
+		<div class="modal " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="exampleModalLongTitle">Библиотека окрасов</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h3 align="center" class="lib-group-elem">Вид окрасов</h3>
+						<div class="row-modal">
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+							<div class="lib-elem">
+								<div class="caption-elem-lib">
+									Окрас 1
+								</div>
+								<div class="lib-elem-img">
+									<img src="1.png">
+								</div>
+								<div>
+									<button type="button" class="input-code">Применить</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-kns" data-dismiss="modal">Закрыть</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#" title="Стикеры" class="stickers" data-id="1"><img src="/img/stickers/icon.png"
+				class="stickers_icon"></a>
+		<span id="stickers_above">
+			<div class="stickers_panel" data-id="1" style="">
+				<div class="stikers-content">
+					<div class="mySlides ">
+						<p class="stickers_title">Транзакция © <a href="/cat119456">Райан</a></p><a href="#"
+							class="sticker" data-code=":sticker:transaction1:1:"><img
+								src="./kns_files/transaction/1.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:2:"><img
+								src="./kns_files/transaction/2.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:3:"><img
+								src="/./kns_files/transaction/3.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:4:"><img
+								src="./kns_files/transaction/4.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:5:"><img
+								src="/./kns_files/transaction/5.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:6:"><img
+								src="./kns_files/transaction/6.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:7:"><img
+								src="./kns_files/transaction/7.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:8:"><img
+								src="./kns_files/transaction/8.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:9:"><img
+								src="./kns_files/transaction/9.png" width="96" height="96"></a><a href="#"
+							class="sticker" data-code=":sticker:transaction1:10:"><img
+								src="./kns_files/transaction/10.png" width="96" height="96"></a>
+					</div>
+					<div class="mySlides ">
+						<p class="stickers_title">Транзакция © <a href="/cat289662">Пёстроглаз</a></p><a href="#"
+							class="sticker" data-code=":sticker:transaction2:1:"><img
+								src="//e.catwar.su/img/stickers/transaction2/1.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:2:"><img
+								src="//e.catwar.su/img/stickers/transaction2/2.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:3:"><img
+								src="//e.catwar.su/img/stickers/transaction2/3.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:4:"><img
+								src="//e.catwar.su/img/stickers/transaction2/4.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:5:"><img
+								src="//e.catwar.su/img/stickers/transaction2/5.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:6:"><img
+								src="//e.catwar.su/img/stickers/transaction2/6.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:7:"><img
+								src="//e.catwar.su/img/stickers/transaction2/7.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:8:"><img
+								src="//e.catwar.su/img/stickers/transaction2/8.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:9:"><img
+								src="//e.catwar.su/img/stickers/transaction2/9.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction2:10:"><img
+								src="//e.catwar.su/img/stickers/transaction2/10.png" width="96" height="96"></a>
+					</div>
+					<div class="mySlides ">
+						<p class="stickers_title">Транзакция © <a href="/cat489667">Лейси</a></p><a href="#"
+							class="sticker" data-code=":sticker:transaction3:1:"><img
+								src="//e.catwar.su/img/stickers/transaction3/1.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:2:"><img
+								src="//e.catwar.su/img/stickers/transaction3/2.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:3:"><img
+								src="//e.catwar.su/img/stickers/transaction3/3.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:4:"><img
+								src="//e.catwar.su/img/stickers/transaction3/4.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:5:"><img
+								src="//e.catwar.su/img/stickers/transaction3/5.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:6:"><img
+								src="//e.catwar.su/img/stickers/transaction3/6.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:7:"><img
+								src="//e.catwar.su/img/stickers/transaction3/7.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:8:"><img
+								src="//e.catwar.su/img/stickers/transaction3/8.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:9:"><img
+								src="//e.catwar.su/img/stickers/transaction3/9.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:10:"><img
+								src="//e.catwar.su/img/stickers/transaction3/10.png" width="96" height="96"></a><a
+							href="#" class="sticker" data-code=":sticker:transaction3:11:"><img
+								src="//e.catwar.su/img/stickers/transaction3/11.png" width="96" height="96"></a>
+					</div>
+
+				</div>
+				<div class="stikers-panel">
+					<span class="dot" onclick="SelectCurrentSlide(1)"><img src="./kns_files/1.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(2)"><img src="/kns_files/2.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(3)"><img src="/kns_files/3.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(1)"><img src="./kns_files/1.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(2)"><img src="/kns_files/2.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(3)"><img src="/kns_files/3.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(1)"><img src="./kns_files/1.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(2)"><img src="/kns_files/2.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(3)"><img src="/kns_files/3.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(1)"><img src="./kns_files/1.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(2)"><img src="/kns_files/2.png"></span>
+					<span class="dot" onclick="SelectCurrentSlide(3)"><img src="/kns_files/3.png"></span>
+				</div>
+			</div>
 	</div>
-	<div>
-		<a href="#" id="random">Случайный окрас</a> |
-		<a href="#" id="random2">Очень случайный окрас</a> | 
-		<a href="#" data-toggle="modal" data-target="#exampleModalLong">Открыть библиотеку окрасов</a><br>
-		<label><b>Код окраса:</b><input id="code" onchange="Kns.parseCode(this);" class="output-code"><button onclick="Kns.copyCode();" class="btn-kns copy" title="Копировать окрас">c</button></label>
+	</span>
+
+
+
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+
+		function SelectCurrentSlide(n) {
+			showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			if (n > slides.length) { slideIndex = 1 }
+			if (n < 1) { slideIndex = slides.length }
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex - 1].style.display = "block";
+			dots[slideIndex - 1].className += " active";
+		}
+
+		$(document).on("click", ".stickers", function (e) {
+			e.preventDefault();
+			var panel = $(".stickers_panel[data-id=" + $(this).attr("data-id") + "]");
+			if (panel.is(":hidden")) {
+				panel.show();
+			} else {
+				panel.hide();
+			}
+		});
+		$(document).on("click", function (e) {
+			var panel = $(".stickers_panel:visible");
+			if (panel.length > 0 && panel.find($(e.target)).length < 1 && $(".stickers").find($(e.target)).length < 1 && ["stickers", "stickers_panel"].indexOf(e.target.id) == -1) {
+				panel.hide();
+			}
+		});
+	</script>
+
+	<script>(function (d, w, c) { (w[c] = w[c] || []).push(function () { try { w.yaCounter6984625 = new Ya.Metrika({ id: 6984625, clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true }) } catch (e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n) }; s.type = "text/javascript"; s.async = true; s.src = "https://d31j93rd8oukbv.cloudfront.net/metrika/watch_ua.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false) } else { f() } })(document, window, "yandex_metrika_callbacks");</script>
+	<div style="visibility:hidden;"><noscript>&lt;img src="https://mc.yandex.ru/watch/6984625"
+			style="position:absolute;left:-9999px" alt=""&gt;</noscript></div>
+	<div id="tiptip_holder" style="max-width:200px;">
+		<div id="tiptip_arrow">
+			<div id="tiptip_arrow_inner"></div>
+		</div>
+		<div id="tiptip_content"></div>
 	</div>
-	<div>
-		<input type="submit" value="Сохранить" id="sbm" class="btn-kns"> 
-		<input type="button" id="reset" value="Сбросить" class="btn-kns">
-	</div>
-	<p><b>Поскольку вам больше 275 лун и вы только что переродились, вы обладаете невероятно редкой возможностью выбрать гетерохромию, один из особых окрасов и/или фиолетовые глаза. Поспешите: это возможно только до 0.5 лун после перерождения.</b></p>
+</body>
 
-</div>
-<p>Каждая кнопка сохраняет одну из поз:</p>
-<p>
-	<input type="button" id="getPng" onclick="Kns.Png_cat_0();" value="Png_cat_0" class="btn-kns">
-	<input type="button" id="getPng" onclick="Kns.Png_cat_1();" value="Png_cat_1" class="btn-kns">
-	<input type="button" id="getPng" onclick="Kns.Png_cat__1();" value="Png_cat__1" class="btn-kns">
-	<input type="button" id="getPng" onclick="Kns.Png_cat_5();" value="Png_cat_5" class="btn-kns">
-	<input type="button" id="getPng" onclick="Kns.Png_cat_2();" value="Png_cat_2" class="btn-kns">
-</p>
-
-<input type="button" id="getPng" onclick="Kns.getPng();" value="Сохранить png в один файл" class="btn-kns">
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle">Библиотека окрасов</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      	<h3 align="center" class="lib-group-elem">Вид окрасов</h3>
-      	<div class="row-modal">
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      		<div class="lib-elem">
-      			<div class="caption-elem-lib">
-      				Окрас 1
-      			</div>
-      			<div class="lib-elem-img">
-      				<img src="1.png" >
-      			</div>
-      			<div>
-      				<button type="button" class="input-code">Применить</button>
-      			</div>
-      		</div>
-      	</div>	
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-kns" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
-<script>(function(d,w,c){(w[c]=w[c]||[]).push(function(){try{w.yaCounter6984625=new Ya.Metrika({id:6984625,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true})}catch(e){}});var n=d.getElementsByTagName("script")[0],s=d.createElement("script"),f=function(){n.parentNode.insertBefore(s,n)};s.type="text/javascript";s.async=true;s.src="https://d31j93rd8oukbv.cloudfront.net/metrika/watch_ua.js";if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",f,false)}else{f()}})(document,window,"yandex_metrika_callbacks");</script><div style="visibility:hidden;"><noscript>&lt;img src="https://mc.yandex.ru/watch/6984625" style="position:absolute;left:-9999px" alt=""&gt;</noscript></div>
-<div id="tiptip_holder" style="max-width:200px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div></body></html>
+</html>

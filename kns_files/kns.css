@@ -1,28 +1,29 @@
 ::-webkit-scrollbar-track {
-	background-color: #FFDEAD;
+	background-color: #ffdead;
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 5px;
-	background-color:#e5bd7f;
-	background-image:url('https://yraaa.ru/_pu/24/59610063.png');
-	background-position:center;
-	background-repeat:no-repeat;
+	background-color: #e5bd7f;
+	background-image: url("https://yraaa.ru/_pu/24/59610063.png");
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-::-webkit-resizer{
-	background-image:url('');
-	background-repeat:no-repeat;
-	width:7px;
-	height:0px;
+::-webkit-resizer {
+	background-image: url("");
+	background-repeat: no-repeat;
+	width: 7px;
+	height: 0px;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
 	width: 11px;
 	height: 11px;
 }
 
-p, h2 {
+p,
+h2 {
 	margin: 7px 0;
 }
 td {
@@ -33,14 +34,16 @@ td {
 	margin-right: auto !important;
 	margin-left: auto !important;
 }
-#color div, #area td, .tabledetail div {
+#color div,
+#area td,
+.tabledetail div {
 	width: 30px;
 	height: 30px;
 	border-radius: 40%;
 	box-sizing: border-box;
 	margin: 1px;
 }
-#area td{
+#area td {
 	border-radius: 5px;
 	margin: 0;
 }
@@ -60,7 +63,10 @@ td {
 .potent_sel {
 	border: 1px black solid;
 }
-.sel, .selected_block, .selected_colour, .selected_field {
+.sel,
+.selected_block,
+.selected_colour,
+.selected_field {
 	font-weight: bold;
 	border-color: red;
 	border-width: 0;
@@ -75,14 +81,19 @@ td {
 	cursor: pointer;
 }
 #confirm {
-	background: #AD8446;
+	background: #ad8446;
 	/*width: 400px;*/
 	min-height: 72px;
 	margin: 5px 0;
 	padding: 5px;
 	border-radius: 5px;
 }
-.a_none, #moveup, #movedown, .a_none:hover, #moveup:hover, #movedown:hover {
+.a_none,
+#moveup,
+#movedown,
+.a_none:hover,
+#moveup:hover,
+#movedown:hover {
 	text-decoration: none;
 	color: black;
 }
@@ -122,7 +133,12 @@ input {
 	margin-left: 4px;
 }
 
-.row, .row-cat, .row-detail, .row-color, .container-panel, .elem-row {
+.row,
+.row-cat,
+.row-detail,
+.row-color,
+.container-panel,
+.elem-row {
 	display: -webkit-flex;
 	display: flex;
 	overflow-y: auto;
@@ -136,7 +152,7 @@ input {
 	position: absolute;
 	width: 100%;
 }
-#field{
+#field {
 	min-width: 300px;
 	width: 370px;
 	height: 312px;
@@ -144,18 +160,18 @@ input {
 	justify-content: space-between;
 	box-sizing: border-box;
 }
-#detail{
+#detail {
 	height: 312px;
 	max-width: 240px;
 }
-#blocks{
+#blocks {
 	height: 312px;
 	overflow-y: auto;
 	width: 150px;
 	min-width: 150px;
 	border: 1px solid black;
 	padding: 5px; /* Поля вокруг текста */
-	background-color: #FFE4C4;
+	background-color: #ffe4c4;
 	box-sizing: border-box;
 }
 #container {
@@ -174,18 +190,18 @@ input {
 #infoi {
 	z-index: 10;
 }
-.btn-kns{
+.btn-kns {
 	border: 1px solid black;
 	background: #ffe;
 	text-align: center;
-	border-radius: .25rem;
+	border-radius: 0.25rem;
 	line-height: 1.5;
 	font-size: 1rem;
 }
-.btn-kns:hover{
-	background-color: #FFE4C4;
+.btn-kns:hover {
+	background-color: #ffe4c4;
 }
-.output-code{
+.output-code {
 	border: 1px solid black;
 	border-radius: 0.25rem;
 	line-height: 1.5rem;
@@ -195,36 +211,39 @@ input {
 	width: 400px;
 }
 
-.copy{
+.copy {
 	border: 0px none;
 	color: transparent;
 	width: 25px;
 	background: url(copy.png) no-repeat;
 }
 
-.input-code{
+.input-code {
 	border: 1px solid black;
 	width: 100%;
 	background: #fedeab;
 	text-align: center;
-	border-radius: .25rem;
+	border-radius: 0.25rem;
 }
 
-.input-code:hover{
+.input-code:hover {
 	background: #ffe;
 }
 
-.icon{
-	width: 33px; height: 33px; border-radius: 5px; margin: 2px;
+.icon {
+	width: 33px;
+	height: 33px;
+	border-radius: 5px;
+	margin: 2px;
 }
-.info{
+.info {
 	margin-top: 10px;
 }
 /*children row*/
-.cat{
+.cat {
 	min-width: 270px;
 }
-.row-color{
+.row-color {
 	margin: 10px 0px;
 	page-break-after: always;
 	/*flex-basis: 800px;*/
@@ -233,31 +252,30 @@ input {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 }
-.elem-row{
+.elem-row {
 	align-content: flex-start;
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
 	overflow: auto;
-
 }
-.row-column{
+.row-column {
 	flex-direction: column;
 	min-width: 70px;
 	overflow-y: auto;
 	overflow-y: overlay;
 }
-.row-detail{
+.row-detail {
 	align-content: flex-start;
 }
-.row{
+.row {
 	flex-wrap: wrap;
 }
 
 /*lib*/
-.modal-content{
+.modal-content {
 	background-color: #d7b680 !important;
 }
-.row-modal{
+.row-modal {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
@@ -266,11 +284,11 @@ input {
 	margin-bottom: 5%;
 }
 
-.lib-group-elem{
+.lib-group-elem {
 	margin: auto;
 }
 
-.lib-elem{
+.lib-elem {
 	margin-right: 2%;
 	margin-top: 2%;
 	width: 105px;
@@ -279,21 +297,20 @@ input {
 	justify-content: space-between;
 }
 
-.modal-footer .btn-kns{
+.modal-footer .btn-kns {
 	background-color: #fedeab;
 }
 
-.modal-footer .btn-kns:hover{
+.modal-footer .btn-kns:hover {
 	background-color: #ffe;
 }
 
-
-.caption-elem-lib{
+.caption-elem-lib {
 	margin: 3px;
 	text-align: center;
 }
-@media (max-width: 900px){
-	#main{
+@media (max-width: 900px) {
+	#main {
 		width: auto;
 	}
 }
@@ -302,32 +319,33 @@ input {
 	#field {
 		height: 170px;
 	}
-	#detail, #blocks {
+	#detail,
+	#blocks {
 		height: 250px;
 	}
-	::-webkit-scrollbar{
+	::-webkit-scrollbar {
 		width: 5px;
 		height: 5px;
 	}
 }
 
-@media (max-width: 740px){
-	.row{
+@media (max-width: 740px) {
+	.row {
 		-webkit-flex-wrap: wrap;
 		flex-wrap: wrap;
 		width: auto;
 	}
-	#detail{
+	#detail {
 		-webkit-order: 4;
 		width: 60%;
-		max-width:500px;
+		max-width: 500px;
 	}
-	#blocks{
+	#blocks {
 		-webkit-order: 3;
 		width: 40%;
 		min-width: 0;
 	}
-	#field{
+	#field {
 		max-width: 100%;
 		min-width: 100%;
 		width: 100%;
@@ -337,24 +355,24 @@ input {
 		margin-left: -8px;
 		-webkit-order: 1;
 	}
-	.row-color{
+	.row-color {
 		width: 100%;
-		-webkit-order:2;
+		-webkit-order: 2;
 	}
 	#confirm {
 		width: 100%;
 	}
-	.output-code{
+	.output-code {
 		width: 50%;
 	}
-	.row-modal{
+	.row-modal {
 		justify-content: center;
 	}
-	@media(max-width: 345px){
-		#detail{
+	@media (max-width: 345px) {
+		#detail {
 			width: 65%;
 		}
-		#blocks{
+		#blocks {
 			width: 35%;
 			min-width: 0;
 		}
@@ -368,103 +386,286 @@ input {
 }
 
 /*sliders*/
-input[type=range] {
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-    width: 100%; /* Specific width is required for Firefox. */
-    background: transparent; /* Otherwise white in Chrome */
+input[type="range"] {
+	-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+	width: 100%; /* Specific width is required for Firefox. */
+	background: transparent; /* Otherwise white in Chrome */
 }
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
 }
 
-input[type=range]:focus {
-    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+input[type="range"]:focus {
+	outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
 
-input[type=range]::-ms-track {
-    width: 100%;
-    cursor: pointer;
+input[type="range"]::-ms-track {
+	width: 100%;
+	cursor: pointer;
 
-    /* Hides the slider so custom styles can be added */
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-}/* Special styling for WebKit/Blink */
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: 1px solid #d19405;
-    height: 18px;
-    width: 18px;
-    border-radius: 8px;
-    background: #fece2f;
-    cursor: pointer;
-    margin-top: -5px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+	/* Hides the slider so custom styles can be added */
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+} /* Special styling for WebKit/Blink */
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 1px solid #d19405;
+	height: 18px;
+	width: 18px;
+	border-radius: 8px;
+	background: #fece2f;
+	cursor: pointer;
+	margin-top: -5px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
 
 /* All the same stuff for Firefox */
-input[type=range]::-moz-range-thumb {
-    border: 1px solid #d19405;
-    height: 18px;
-    width: 18px;
-    border-radius: 8px;
-    background: #fece2f;
-    cursor: pointer;
+input[type="range"]::-moz-range-thumb {
+	border: 1px solid #d19405;
+	height: 18px;
+	width: 18px;
+	border-radius: 8px;
+	background: #fece2f;
+	cursor: pointer;
 }
 
 /* All the same stuff for IE */
-input[type=range]::-ms-thumb {
-    border: 1px solid #d19405;
-    height: 18px;
-    width: 18px;
-    border-radius: 8px;
-    background: #fece2f;
-    cursor: pointer;
+input[type="range"]::-ms-thumb {
+	border: 1px solid #d19405;
+	height: 18px;
+	width: 18px;
+	border-radius: 8px;
+	background: #fece2f;
+	cursor: pointer;
 }
-input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 12px;
-    cursor: pointer;
-    background: #feeebd;
-    border-radius: 8px;
-    border: 1px solid #8e846b;
-}
-
-input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #feeebd;
+input[type="range"]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 12px;
+	cursor: pointer;
+	background: #feeebd;
+	border-radius: 8px;
+	border: 1px solid #8e846b;
 }
 
-input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 12px;
-    cursor: pointer;
-    background: #feeebd;
-    border-radius: 8px;
-    border: 1px solid #8e846b;
+input[type="range"]:focus::-webkit-slider-runnable-track {
+	background: #feeebd;
 }
 
-input[type=range]::-ms-track {
-    width: 100%;
-    height: 12px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    border-width: 16px 0;
-    color: transparent;
+input[type="range"]::-moz-range-track {
+	width: 100%;
+	height: 12px;
+	cursor: pointer;
+	background: #feeebd;
+	border-radius: 8px;
+	border: 1px solid #8e846b;
 }
-input[type=range]::-ms-fill-lower {
-    background: #feeebd;
-    border: 1px solid #8e846b;
-    border-radius: 8px;
+
+input[type="range"]::-ms-track {
+	width: 100%;
+	height: 12px;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	border-width: 16px 0;
+	color: transparent;
 }
-input[type=range]:focus::-ms-fill-lower {
-    background: #feeebd;
+input[type="range"]::-ms-fill-lower {
+	background: #feeebd;
+	border: 1px solid #8e846b;
+	border-radius: 8px;
 }
-input[type=range]::-ms-fill-upper {
-    background: #feeebd;
-    border: 1px solid #8e846b;
-    border-radius: 8px;
+input[type="range"]:focus::-ms-fill-lower {
+	background: #feeebd;
 }
-input[type=range]:focus::-ms-fill-upper {
-    background: #feeebd;
+input[type="range"]::-ms-fill-upper {
+	background: #feeebd;
+	border: 1px solid #8e846b;
+	border-radius: 8px;
+}
+input[type="range"]:focus::-ms-fill-upper {
+	background: #feeebd;
+}
+
+button.bbcode {
+	background: RGBA(255, 255, 255, 0.8);
+	border: none;
+}
+
+button.bbcode:focus {
+	background: RGBA(255, 255, 255, 0.7);
+}
+
+.stickers img {
+	position: relative;
+	top: 3px;
+}
+
+.stickers_panel {
+	background: RGBA(255, 255, 255, 0.9);
+	position: absolute;
+	margin-top: 25px;
+	width: 320px;
+	height: 400px;
+	overflow: auto;
+	padding-left: 15px;
+	display: flex;
+	flex-direction: column;
+}
+
+.stickers_title {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+#stickers_above {
+	position: relative;
+}
+
+#stickers_above .stickers_panel {
+	bottom: 10px;
+}
+
+.parsed span[style^="color:"] a,
+.parsed span[style*=" color:"] a,
+.parsed span[style*=";color:"] a,
+.parsed div[style^="color:"] a,
+.parsed div[style*=" color:"] a,
+.parsed div[style*=";color:"] a {
+	color: inherit;
+}
+
+.stikers-content {
+	max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: Verdana, sans-serif;
+	margin: 0;
+}
+.mySlides {
+	display: none;
+}
+img {
+	vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+	max-width: 1000px;
+	position: relative;
+	margin: auto;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 16px;
+	margin-top: -22px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	margin: 0 2px;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+.dot img {
+	width: 30px;
+	height: 30px;
+}
+
+.active,
+.dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+	.prev,
+	.next,
+	.text {
+		font-size: 11px;
+	}
+}
+
+
+.stikers-panel {
+	text-align: center;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
 }
