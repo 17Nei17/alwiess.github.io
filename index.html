@@ -16,7 +16,7 @@
 	<script src="./kns_files/vue.js"></script>
 	<script src="./kns_files/jquery-ui.js"></script>
 	<script src="./kns_files/kns_def.json"></script>
-	<script src="./kns_files/kns.js"></script>
+	<script defer src="./kns_files/kns.js"></script>
 	<script src="./kns_files/ssl.js"></script>
 	<script async="" src="./kns_files/all.js"></script>
 	<script src="./kns_files/custom-bs4.dist.js"></script>
@@ -223,8 +223,12 @@
 				</div>
 			</div>
 		</div>
-		<a href="#" title="Стикеры" class="stickers" data-id="1"><img src="/img/stickers/icon.png"
-				class="stickers_icon"></a>
+
+		<div style="margin-top:120px;">
+			<a href="#" title="Стикеры" class="stickers" data-id="1"><img src="/img/stickers/icon.png"
+					class="stickers_icon"></a>
+		</div>
+
 		<span id="stickers_above">
 			<div class="stickers_panel" data-id="1" style="">
 				<div class="stikers-content">
@@ -301,7 +305,7 @@
 					</div>
 
 				</div>
-				<div class="stikers-panel">
+				<div class="stikers-panel" id="stikers-panel">
 					<span class="dot" onclick="SelectCurrentSlide(1)"><img src="./kns_files/1.png"></span>
 					<span class="dot" onclick="SelectCurrentSlide(2)"><img src="/kns_files/2.png"></span>
 					<span class="dot" onclick="SelectCurrentSlide(3)"><img src="/kns_files/3.png"></span>
