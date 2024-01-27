@@ -536,7 +536,7 @@ button.bbcode:focus {
 }
 
 .stikers-content {
-	max-height: 300px;
+	max-height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -618,8 +618,8 @@ img {
 	transition: background-color 0.6s ease;
 }
 .dot img {
-	width: 30px;
-	height: 30px;
+	width: 45px;
+	height: 45px;
 }
 
 .active,
@@ -668,4 +668,5 @@ img {
     overflow-x: scroll;
     display: flex;
     flex-direction: row;
+	min-height: 60px;
 }
