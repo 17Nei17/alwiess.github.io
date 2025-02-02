@@ -468,3 +468,22 @@ input[type=range]::-ms-fill-upper {
 input[type=range]:focus::-ms-fill-upper {
     background: #feeebd;
 }
+
+#history {
+	max-height: 200px;
+    overflow: auto;
+    display: block;
+	margin-top: 12px;
+}
+
+#history-header {
+	display: block;
+    margin-top: 24px;
+}
+
+.historyItem {
+	display: block;
+    padding: 2px;
+    background: white;
+    border: 1px solid black;
+}

@@ -413,6 +413,7 @@ var initAll = function (data) {
 		html = "<table><tr>" + html + "</tr></table>";
 		$("#cat").html(html);
 		$("#code").val(Kns.code());
+		Kns.setHistory(Kns.code());
 	};
 
 	Kns.drawBlocks = function () {
@@ -644,6 +645,7 @@ var initAll = function (data) {
 			Kns.clearCanvas();
 			$(".edit0").click();
 		}
+
 	};
 
 	Kns.selectedDetail = function (menu) {
@@ -1435,6 +1437,24 @@ var initAll = function (data) {
 
 		Kns.dowloadPng(canvasForPng, 'all-poses')
 	};
+
+	Kns.setHistory = function (code) {
+		const historyWrapper = document.querySelector('#history');
+		localStorage.setItem("history", code)
+		let div = document.createElement('div');
+		div.className = "historyItem";
+		div.innerHTML = code;
+	  
+		historyWrapper && historyWrapper.prepend(div);
+	}
+	Kns.setHistoryFromLS = function(){
+		const historyWrapper = document.querySelector('#history');
+		let div = document.createElement('div');
+		div.className = "historyItem";
+		div.innerHTML = localStorage.get("history", code);
+		historyWrapper && historyWrapper.prepend(div);
+	}
+	
 	Kns.start();
 };
 
